@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Purchases</string>
+    <string name="sign_in">sign-in</string>
+    <string name="email">Email</string>
+    <string name="password">password</string>
+    <string name="resister">resister</string>
+    <string name="sign_in_btm">sign in</string>
+    <string name="username">username</string>
+    <string name="re_password">re_password</string>
+</resources>
