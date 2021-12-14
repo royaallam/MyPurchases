@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.tuwiaq.mypurchases.LoginFragment.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/navigateToRegisterFragment"
+            app:destination="@id/mapSuperMarketFragment" />
+        <action
+            android:id="@+id/navigationToMapSuperMarketFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.tuwiaq.mypurchases.RegisterFragment.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/navigationTOLoginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapSuperMarketFragment"
+        android:name="com.tuwiaq.mypurchases.Location.MapSuperMarketFragment"
+        android:label="MapSuperMarketFragment" >
+        <action
+            android:id="@+id/navigationTOScanerBarFragment"
+            app:destination="@id/scanerBarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scanerBarFragment"
+        android:name="com.tuwiaq.mypurchases.Barcode.ScanerBarFragment"
+        android:label="fragment_scaner_bar"
+        tools:layout="@layout/fragment_scaner_bar" >
+        <action
+            android:id="@+id/navigationTolistAddSuperFragment"
+            app:destination="@id/listAddSuperFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listAddSuperFragment"
+        android:name="com.tuwiaq.mypurchases.Listitem.ListAddSuperFragment"
+        android:label="fragment_list_add_super"
+        tools:layout="@layout/fragment_list_add_super" />
+</navigation>

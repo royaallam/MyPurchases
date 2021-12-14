@@ -4,10 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_bar_code_super.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_list_add_supe.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_list_add_super.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_register.xml" value="0.264" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_register2.xml" value="0.2" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_resister.xml" value="0.1" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_scaner_bar.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
