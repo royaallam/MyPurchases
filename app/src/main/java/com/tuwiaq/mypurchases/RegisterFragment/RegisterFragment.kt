@@ -11,11 +11,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+
 import com.tuwiaq.mypurchases.LoginFragment.LoginFragment
 import com.tuwiaq.mypurchases.R
+
+
 private const val TAG = "RegisterFragment"
 class RegisterFragment : Fragment() {
 
@@ -25,11 +29,14 @@ class RegisterFragment : Fragment() {
     private lateinit var repasswordET: EditText
     private lateinit var resisterBTN: Button
     private lateinit var auth: FirebaseAuth
+    private lateinit var firestore:FirebaseFirestore
+
 
     private lateinit var viewModel: RegisterViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
+        firestore= FirebaseFirestore.getInstance()
     }
 
     override fun onCreateView(
@@ -92,10 +99,26 @@ class RegisterFragment : Fragment() {
     }
 
     private fun registerUser(userName: String, emailEText: String, passWord: String) {
+
         auth.createUserWithEmailAndPassword(emailEText, passWord)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     showToast("good job")
+                    // Create a new user with a first and last name
+                    val user = hashMapOf(
+                        "username" to userName,
+                        "email" to emailEText,
+                        "password" to passWord
+                    )
+                    firestore.collection("users").document(auth.currentUser?.uid!!)
+                        .set(user)
+                        .addOnSuccessListener { documentReference ->
+                            Log.d(TAG, "DocumentSnapshot added succssfully")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.w(TAG, "Error adding document", e)
+                        }
+
                 } else {
                     Log.e(TAG, "there was something wrong", task.exception)
                 }
@@ -107,6 +130,7 @@ class RegisterFragment : Fragment() {
                 auth.currentUser?.updateProfile(updateProfile)
 
             }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

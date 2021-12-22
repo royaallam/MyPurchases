@@ -11,7 +11,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.tuwiaq.mypurchases.Location.MapSuperMarketFragment
 import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragment
@@ -73,8 +77,11 @@ class LoginFragment : Fragment() {
                                 .replace(R.id.fragment_container,fragment)
                                 .addToBackStack(null)
                                 .commit()
-//                            val nav=findNavController()
-//                            val action=Logint
+//                        val navCon = findNavController()
+//                        val action = LoginFragmentDirections.
+//                        navCon.navigate(action)
+
+
                         }
                     }else{
                         showToast("email or password is wrong")

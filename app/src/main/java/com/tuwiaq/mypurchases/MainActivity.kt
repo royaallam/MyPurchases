@@ -3,6 +3,8 @@ package com.tuwiaq.mypurchases
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tuwiaq.mypurchases.LoginFragment.LoginFragment
 
@@ -20,7 +22,9 @@ class MainActivity : AppCompatActivity() {
 //                .add(R.id.fragment_container,fragment)
 //                .commit()
 //        }
-//        val nav=findNavController(R.id.fragment_container)
-//        val bottomNavigationView:BottomNavigationView=findViewById(R.id.)
+//        val nav=findNavController(R.id.my_nav)
+//         //   val bottomNavigationView:BottomNavigationView=findViewById(R.id.my_nav)
+//        //bottomNavigationView.setupWithNavController(nav)
+//        setupActionBarWithNavController(nav)
     }
 }
