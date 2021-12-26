@@ -70,19 +70,20 @@ class LoginFragment : Fragment() {
                 auth.signInWithEmailAndPassword(emaiETexts,passWords)
                     .addOnCompleteListener { task->if (task.isSuccessful){
                         showToast("good job")
-                        val fragment=MapSuperMarketFragment()
-                        activity?.let {
-                            it.supportFragmentManager
-                                .beginTransaction()
-                                .replace(R.id.fragment_container,fragment)
-                                .addToBackStack(null)
-                                .commit()
-//                        val navCon = findNavController()
-//                        val action = LoginFragmentDirections.
-//                        navCon.navigate(action)
-
-
-                        }
+//                        val fragment=MapSuperMarketFragment()
+//                        activity?.let {
+//                            it.supportFragmentManager
+//                                .beginTransaction()
+//                                .replace(R.id.fragment_container,fragment)
+//                                .addToBackStack(null)
+//                                .commit()
+//
+//
+//
+//                        }
+                        val navCon = findNavController()
+                        val action = LoginFragmentDirections.actionLoginFragmentToMapSuperMarketFragment2()
+                        navCon.navigate(action)
                     }else{
                         showToast("email or password is wrong")
                         Log.e(TAG,"there was something wrong",task.exception)

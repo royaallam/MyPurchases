@@ -10,7 +10,7 @@
         android:label="LoginFragment" >
         <action
             android:id="@+id/action_loginFragment_to_mapSuperMarketFragment2"
-            app:destination="@id/mapSuperMarketFragment" />
+            app:destination="@id/mapSMFragment" />
         <action
             android:id="@+id/action_loginFragment_to_registerFragment3"
             app:destination="@id/registerFragment" />
@@ -25,25 +25,29 @@
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/mapSuperMarketFragment"
+        android:id="@+id/mapSMFragment"
         android:name="com.tuwiaq.mypurchases.Location.MapSuperMarketFragment"
         android:label="MapSuperMarketFragment" >
         <action
-            android:id="@+id/action_mapSuperMarketFragment_to_scanerBarFragment4"
-            app:destination="@id/scanerBarFragment4" />
-    </fragment>
-    <fragment
-        android:id="@+id/scanerBarFragment4"
-        android:name="com.tuwiaq.mypurchases.Barcode.ScanerBarFragment"
-        android:label="fragment_scaner_bar"
-        tools:layout="@layout/fragment_scaner_bar" >
-        <action
-            android:id="@+id/action_scanerBarFragment4_to_listAddSuperFragment"
-            app:destination="@id/listAddSuperFragment" />
+            android:id="@+id/action_mapSMFragment_to_barCodeScannerFragment"
+            app:destination="@id/barCodeScannerFragment" />
     </fragment>
     <fragment
         android:id="@+id/listAddSuperFragment"
         android:name="com.tuwiaq.mypurchases.Listitem.ListAddSuperFragment"
         android:label="fragment_list_add_super"
-        tools:layout="@layout/fragment_list_add_super" />
+        tools:layout="@layout/fragment_list_add_super" >
+        <argument
+            android:name="codeId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/barCodeScannerFragment"
+        android:name="com.tuwiaq.mypurchases.Barcode.barCodeScannerFragment"
+        android:label="fragment_bar_code_scanner"
+        tools:layout="@layout/fragment_bar_code_scanner" >
+        <action
+            android:id="@+id/action_barCodeScannerFragment_to_listAddSuperFragment"
+            app:destination="@id/listAddSuperFragment" />
+    </fragment>
 </navigation>

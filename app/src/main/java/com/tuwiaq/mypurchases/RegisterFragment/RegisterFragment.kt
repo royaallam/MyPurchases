@@ -11,12 +11,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 
 import com.tuwiaq.mypurchases.LoginFragment.LoginFragment
+import com.tuwiaq.mypurchases.LoginFragment.LoginFragmentDirections
 import com.tuwiaq.mypurchases.R
 
 
@@ -80,14 +82,17 @@ class RegisterFragment : Fragment() {
                 passWord != passwordRE -> showToast(" Enter a Re-password is correct")
                 else -> {
                     registerUser(userName, emaiEText, passWord)
-                    val fragment=LoginFragment()
-                    activity?.let {
-                        it.supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.fragment_container,fragment)
-                            .addToBackStack(null)
-                            .commit()
-                    }
+//                    val fragment=LoginFragment()
+//                    activity?.let {
+//                        it.supportFragmentManager
+//                            .beginTransaction()
+//                            .replace(R.id.fragment_container,fragment)
+//                            .addToBackStack(null)
+//                            .commit()
+//                    }
+                    val navCon = findNavController()
+                    val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment3()
+                    navCon.navigate(action)
                 }
             }
         }

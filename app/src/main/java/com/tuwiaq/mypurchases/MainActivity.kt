@@ -21,10 +21,10 @@ class MainActivity : AppCompatActivity() {
 //                .beginTransaction()
 //                .add(R.id.fragment_container,fragment)
 //                .commit()
-//        }
+     //   }
 //        val nav=findNavController(R.id.my_nav)
-//         //   val bottomNavigationView:BottomNavigationView=findViewById(R.id.my_nav)
-//        //bottomNavigationView.setupWithNavController(nav)
+//            val bottomNavigationView:BottomNavigationView=findViewById(R.id.my_nav)
+//        bottomNavigationView.setupWithNavController(nav)
 //        setupActionBarWithNavController(nav)
     }
 }

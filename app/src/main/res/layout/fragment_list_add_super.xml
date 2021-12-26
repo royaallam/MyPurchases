@@ -17,15 +17,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/codebarEt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="enter you  bar code"
-        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -34,9 +32,10 @@
         android:layout_width="106dp"
         android:layout_height="27dp"
         android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
         android:text="@string/decripation"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="180dp" />
+        app:layout_constraintTop_toBottomOf="@+id/codebarEt" />
 
     <EditText
         android:id="@+id/decpationEt"
@@ -54,10 +53,10 @@
         android:id="@+id/textView4"
         android:layout_width="96dp"
         android:layout_height="37dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="52dp"
         android:text="priec"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/decpationEt"
         tools:ignore="MissingConstraints" />
@@ -66,21 +65,34 @@
         android:id="@+id/priceRY"
         android:layout_width="219dp"
         android:layout_height="67dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="enter you  priec"
         android:inputType="textPersonName"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="64dp" />
+        tools:layout_editor_absoluteX="21dp" />
 
     <Button
         android:id="@+id/add_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="124dp"
         android:text="ADD"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceRY" />
+
+    <Button
+        android:id="@+id/order_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="148dp"
+        android:text="order"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.656"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceRY"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
