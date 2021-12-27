@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/listAddSuperFragment"
-        android:name="com.tuwiaq.mypurchases.Listitem.ListAddSuperFragment"
+        android:name="com.tuwiaq.mypurchases.Product.ListAddSuperFragment"
         android:label="fragment_list_add_super"
         tools:layout="@layout/fragment_list_add_super" >
         <argument

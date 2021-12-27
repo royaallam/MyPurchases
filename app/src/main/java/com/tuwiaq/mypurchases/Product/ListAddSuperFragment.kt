@@ -1,4 +1,4 @@
-package com.tuwiaq.mypurchases.Listitem
+package com.tuwiaq.mypurchases.Product
 
 import android.os.Bundle
 import android.util.Log
@@ -38,7 +38,7 @@ class ListAddSuperFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_list_add_super, container, false)
+        val view = inflater.inflate(R.layout.fragment_list_add_pro, container, false)
         Init(view)
         return view
     }

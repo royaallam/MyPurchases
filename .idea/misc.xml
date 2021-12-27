@@ -3,9 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/drawable/imag2.xml" value="0.101" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/drawable/image1.xml" value="0.1" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/drawable/image_add.xml" value="0.101" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/drawable/image_cart.xml" value="0.101" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/add_caet_item.xml" value="0.17883211678832117" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/cart_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_bar_code_scanner.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_bar_code_super.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_cart_pro.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_cartl_lst.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_list_add_pro.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_list_add_supe.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_list_add_super.xml" value="0.25" />
@@ -18,7 +26,12 @@
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_resister.xml" value="0.1" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_scaner_bar.xml" value="0.4" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_scaner_bar_code.xml" value="0.264" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/fragment_supermarket_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/list_product_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/list_productor.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/list_supermarket_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/map_supermarket.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/AL-GHAMDI/AndroidStudioProjects/MyPurchases/app/src/main/res/layout/supermarket_slow.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
