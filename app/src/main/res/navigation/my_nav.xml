@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment3"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_supermarketViewFragment"
+            app:destination="@id/supermarketViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -50,4 +53,9 @@
             android:id="@+id/action_barCodeScannerFragment_to_listAddSuperFragment"
             app:destination="@id/listAddSuperFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/supermarketViewFragment"
+        android:name="com.tuwiaq.mypurchases.Supermarket.SupermarketViewFragment"
+        android:label="fragment_supermarket_view"
+        tools:layout="@layout/fragment_supermarket_view" />
 </navigation>

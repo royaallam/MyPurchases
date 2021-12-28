@@ -8,10 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.navigation.fragment.findNavController
+import com.google.api.LogDescriptor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.DocumentReference
@@ -30,8 +29,13 @@ class RegisterFragment : Fragment() {
     private lateinit var passwordET: EditText
     private lateinit var repasswordET: EditText
     private lateinit var resisterBTN: Button
+    private lateinit var pointGroup:RadioGroup
+    private lateinit var userRb:RadioButton
+    private lateinit var superMk:RadioButton
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore:FirebaseFirestore
+    var type=""
+
 
 
     private lateinit var viewModel: RegisterViewModel
@@ -59,7 +63,11 @@ class RegisterFragment : Fragment() {
         passwordET = view.findViewById(R.id.passeord_edtxt)
         repasswordET = view.findViewById(R.id.re_password_edtext)
         resisterBTN = view.findViewById(R.id.resis_btn)
+        pointGroup=view.findViewById(R.id.radioGroup)
+        userRb=view.findViewById(R.id.radio_user)
+        superMk=view.findViewById(R.id.radio_supermarket)
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -69,19 +77,31 @@ class RegisterFragment : Fragment() {
             Log.d(TAG , "hi ${currentUser.displayName}")
         }
 
+        pointGroup.setOnCheckedChangeListener { group, i ->
+            Log.d(TAG, "id: $id")
+            when (pointGroup.checkedRadioButtonId) {
+                R.id.radio_user -> type = "user"
+                R.id.radio_supermarket -> type = "Supermarket"
+            }
+        }
+
         resisterBTN.setOnClickListener {
             val userName: String = usernameET.text.toString()
             val emaiEText: String = emailET.text.toString()
             val passWord: String = passwordET.text.toString()
             val passwordRE: String = repasswordET.text.toString()
 
+
+
             when {
                 userName.isEmpty() -> showToast("Please Enter a userName? ")
                 emaiEText.isEmpty() -> showToast("Please Enter a Email?")
                 passWord.isEmpty() -> showToast("Please Enter a Password?")
                 passWord != passwordRE -> showToast(" Enter a Re-password is correct")
+
                 else -> {
-                    registerUser(userName, emaiEText, passWord)
+                    registerUser(userName, emaiEText, passWord, type)
+
 //                    val fragment=LoginFragment()
 //                    activity?.let {
 //                        it.supportFragmentManager
@@ -93,8 +113,10 @@ class RegisterFragment : Fragment() {
                     val navCon = findNavController()
                     val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment3()
                     navCon.navigate(action)
-                }
+               }
             }
+
+
         }
     }
 
@@ -103,17 +125,21 @@ class RegisterFragment : Fragment() {
 
     }
 
-    private fun registerUser(userName: String, emailEText: String, passWord: String) {
+    private fun registerUser(userName: String, emailEText: String, passWord: String, type: String) {
 
         auth.createUserWithEmailAndPassword(emailEText, passWord)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     showToast("good job")
                     // Create a new user with a first and last name
+
+                    Log.d(TAG, type)
                     val user = hashMapOf(
                         "username" to userName,
                         "email" to emailEText,
-                        "password" to passWord
+                        "password" to passWord,
+                        "Type" to type
+
                     )
                     firestore.collection("users").document(auth.currentUser?.uid!!)
                         .set(user)
