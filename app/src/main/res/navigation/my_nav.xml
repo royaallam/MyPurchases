@@ -32,8 +32,8 @@
         android:name="com.tuwiaq.mypurchases.Location.MapSuperMarketFragment"
         android:label="MapSuperMarketFragment" >
         <action
-            android:id="@+id/action_mapSMFragment_to_userProdutorFragment2"
-            app:destination="@id/userProdutorFragment2" />
+            android:id="@+id/action_mapSMFragment_to_superMarketViewFragment"
+            app:destination="@id/superMarketViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/barCodeScannerFragment"
@@ -51,11 +51,19 @@
     <fragment
         android:id="@+id/superMarketViewFragment"
         android:name="com.tuwiaq.mypurchases.Supermarket.SuperMarketViewFragment"
-        android:label="SuperMarketViewFragment" />
+        android:label="SuperMarketViewFragment" >
+        <action
+            android:id="@+id/action_superMarketViewFragment_to_userProdutorFragment2"
+            app:destination="@id/userProdutorFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/userProdutorFragment2"
         android:name="com.tuwiaq.mypurchases.UserProductor.UserProdutorFragment"
-        android:label="UserProdutorFragment" />
+        android:label="UserProdutorFragment" >
+        <action
+            android:id="@+id/action_userProdutorFragment2_to_productorDeatiFragment"
+            app:destination="@id/productorDeatiFragment" />
+    </fragment>
     <fragment
         android:id="@+id/listAddSuperFragment"
         android:name="com.tuwiaq.mypurchases.Product.ListAddSuperFragment"
@@ -63,5 +71,14 @@
         <argument
             android:name="codeId"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/productorDeatiFragment"
+        android:name="com.tuwiaq.mypurchases.Productorslow.ProductorDeatiFragment"
+        android:label="fragment_productor_deati"
+        tools:layout="@layout/fragment_productor_deati" >
+        <action
+            android:id="@+id/action_productorDeatiFragment_to_cartListProdutorFragment"
+            app:destination="@id/cartListProdutorFragment" />
     </fragment>
 </navigation>

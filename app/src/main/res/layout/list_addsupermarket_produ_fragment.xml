@@ -99,15 +99,29 @@
         android:id="@+id/iamge_pro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="239dp"
-        tools:layout_editor_absoluteY="18dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/upload_imag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="60dp"
         android:text="upload"
-        tools:layout_editor_absoluteX="258dp"
-        tools:layout_editor_absoluteY="177dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iamge_pro" />
+
+    <Button
+        android:id="@+id/bta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="60dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upload_imag" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,7 +40,7 @@ class MapSuperMarketFragment : Fragment() {
 //                       .commit()
 //               }
                val navCon = findNavController()
-               val action = MapSuperMarketFragmentDirections.actionMapSMFragmentToUserProdutorFragment2()
+               val action = MapSuperMarketFragmentDirections.actionMapSMFragmentToSuperMarketViewFragment()
                navCon.navigate(action)
 //           }
 

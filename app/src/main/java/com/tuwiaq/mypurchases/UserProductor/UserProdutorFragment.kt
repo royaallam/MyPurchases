@@ -6,10 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.EventListener
@@ -17,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.tuwiaq.mypurchases.LoginFragment.LoginFragmentDirections
 import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.Supermarket.SuperMarkt
 
@@ -52,10 +55,16 @@ class UserProdutorFragment : Fragment() {
     inner class UserprodutorHolder(view: View) : RecyclerView.ViewHolder(view) {
      //   val iamgePro: ImageView = itemView.findViewById(R.id.pro_item_iamg)
         val decripation: TextView = itemView.findViewById(R.id.decrpation_item)
+        val  slowProductpe:Button=itemView.findViewById(R.id.button)
 
         private lateinit var titleProUser: Prodctor
         fun bind(prodctor: Prodctor) {
             titleProUser = prodctor
+            slowProductpe.setOnClickListener {
+                val navCon = findNavController()
+                val action = UserProdutorFragmentDirections.actionUserProdutorFragment2ToProductorDeatiFragment()
+                navCon.navigate(action)
+            }
 
         }
     }

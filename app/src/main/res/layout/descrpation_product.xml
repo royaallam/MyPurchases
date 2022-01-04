@@ -50,11 +50,14 @@
         android:id="@+id/qutity_prodctor"
         android:layout_width="68dp"
         android:layout_height="39dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="394dp" />
+        app:layout_constraintEnd_toStartOf="@+id/add_pro"
+        app:layout_constraintHorizontal_bias="0.602"
+        app:layout_constraintStart_toEndOf="@+id/sub_prod"
+        app:layout_constraintTop_toBottomOf="@+id/decripa_pro"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/add_pro"
@@ -70,10 +73,12 @@
         android:id="@+id/add_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="addCart"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="478dp" />
+        app:layout_constraintTop_toBottomOf="@+id/qutity_prodctor"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.tuwiaq.mypurchases.LoginFragment.LoginFragmentDirections
 import com.tuwiaq.mypurchases.R
+import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragmentDirections
 
 
 private const val TAG = "SuperMarketViewFragment"
@@ -69,7 +70,9 @@ class SuperMarketViewFragment : Fragment() {
             titleSM = supermart
            // superMarketTextView.text
             supermarketButtom.setOnClickListener {
-
+                val navCon = findNavController()
+                val action = SuperMarketViewFragmentDirections.actionSuperMarketViewFragmentToUserProdutorFragment2()
+                navCon.navigate(action)
             }
         }
 
