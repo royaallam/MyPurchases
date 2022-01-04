@@ -15,7 +15,7 @@ import com.tuwiaq.mypurchases.R
 
 class MapSuperMarketFragment : Fragment() {
 
-    private lateinit var locationBtm:Button
+    private lateinit var locationBtm: Button
 
 
     override fun onCreateView(
@@ -24,13 +24,13 @@ class MapSuperMarketFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.map_supermarket, container, false)
-      locationBtm=view.findViewById(R.id.location_btm)
+        locationBtm = view.findViewById(R.id.location_btm)
         return view
     }
 
     override fun onStart() {
         super.onStart()
-           locationBtm.setOnClickListener {
+        locationBtm.setOnClickListener {
 //               val fragment= barCodeScannerFragment()
 //               activity?.let {
 //                   it.supportFragmentManager
@@ -40,9 +40,10 @@ class MapSuperMarketFragment : Fragment() {
 //                       .commit()
 //               }
                val navCon = findNavController()
-               val action = MapSuperMarketFragmentDirections.actionMapSMFragmentToBarCodeScannerFragment()
+               val action = MapSuperMarketFragmentDirections.actionMapSMFragmentToUserProdutorFragment2()
                navCon.navigate(action)
-           }
+//           }
 
+        }
     }
 }

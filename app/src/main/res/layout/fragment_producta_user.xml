@@ -30,7 +30,7 @@
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_weight="11"
-            android:text="Product List" />
+            android:text="@string/product_list" />
 
         <FrameLayout
             android:id="@+id/btn_card"
@@ -38,17 +38,17 @@
             android:layout_width="0sp"
             android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/cartButtom"
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/image_cart" />
+            <ImageView
+                android:id="@+id/cartButtom"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/image_cart" />
         </FrameLayout>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/product_recycler"
+        android:id="@+id/product_user_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/panel"

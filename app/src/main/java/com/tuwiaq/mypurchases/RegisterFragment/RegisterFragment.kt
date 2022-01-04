@@ -100,16 +100,7 @@ class RegisterFragment : Fragment() {
                 passWord != passwordRE -> showToast(" Enter a Re-password is correct")
 
                 else -> {
-                    registerUser(userName, emaiEText, passWord, type)
-
-//                    val fragment=LoginFragment()
-//                    activity?.let {
-//                        it.supportFragmentManager
-//                            .beginTransaction()
-//                            .replace(R.id.fragment_container,fragment)
-//                            .addToBackStack(null)
-//                            .commit()
-//                    }
+                   // viewModel.registerUser(userName,emaiEText,passWord,type)
                     val navCon = findNavController()
                     val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment3()
                     navCon.navigate(action)
@@ -125,42 +116,42 @@ class RegisterFragment : Fragment() {
 
     }
 
-    private fun registerUser(userName: String, emailEText: String, passWord: String, type: String) {
-
-        auth.createUserWithEmailAndPassword(emailEText, passWord)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    showToast("good job")
-                    // Create a new user with a first and last name
-
-                    Log.d(TAG, type)
-                    val user = hashMapOf(
-                        "username" to userName,
-                        "email" to emailEText,
-                        "password" to passWord,
-                        "Type" to type
-
-                    )
-                    firestore.collection("users").document(auth.currentUser?.uid!!)
-                        .set(user)
-                        .addOnSuccessListener { documentReference ->
-                            Log.d(TAG, "DocumentSnapshot added succssfully")
-                        }
-                        .addOnFailureListener { e ->
-                            Log.w(TAG, "Error adding document", e)
-                        }
-
-                } else {
-                    Log.e(TAG, "there was something wrong", task.exception)
-                }
-            }
-                val updateProfile = userProfileChangeRequest {
-                    displayName = userName
-                }
-
-                auth.currentUser?.updateProfile(updateProfile)
-
-            }
+//    private fun registerUser(userName: String, emailEText: String, passWord: String, type: String) {
+//
+//        auth.createUserWithEmailAndPassword(emailEText, passWord)
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    showToast("good job")
+//                    // Create a new user with a first and last name
+//
+//                    Log.d(TAG, type)
+//                    val user = hashMapOf(
+//                        "username" to userName,
+//                        "email" to emailEText,
+//                        "password" to passWord,
+//                        "Type" to type
+//
+//                    )
+//                    firestore.collection("users").document(auth.currentUser?.uid!!)
+//                        .set(user)
+//                        .addOnSuccessListener { documentReference ->
+//                            Log.d(TAG, "DocumentSnapshot added succssfully")
+//                        }
+//                        .addOnFailureListener { e ->
+//                            Log.w(TAG, "Error adding document", e)
+//                        }
+//
+//                } else {
+//                    Log.e(TAG, "there was something wrong", task.exception)
+//                }
+//            }
+//                val updateProfile = userProfileChangeRequest {
+//                    displayName = userName
+//                }
+//
+//                auth.currentUser?.updateProfile(updateProfile)
+//
+//            }
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

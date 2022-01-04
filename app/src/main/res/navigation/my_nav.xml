@@ -15,8 +15,8 @@
             android:id="@+id/action_loginFragment_to_registerFragment3"
             app:destination="@id/registerFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_supermarketViewFragment"
-            app:destination="@id/supermarketViewFragment" />
+            android:id="@+id/action_loginFragment_to_barCodeScannerFragment"
+            app:destination="@id/barCodeScannerFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -32,17 +32,8 @@
         android:name="com.tuwiaq.mypurchases.Location.MapSuperMarketFragment"
         android:label="MapSuperMarketFragment" >
         <action
-            android:id="@+id/action_mapSMFragment_to_barCodeScannerFragment"
-            app:destination="@id/barCodeScannerFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/listAddSuperFragment"
-        android:name="com.tuwiaq.mypurchases.Product.ListAddSuperFragment"
-        android:label="fragment_list_add_super"
-        tools:layout="@layout/fragment_list_add_super" >
-        <argument
-            android:name="codeId"
-            app:argType="string" />
+            android:id="@+id/action_mapSMFragment_to_userProdutorFragment2"
+            app:destination="@id/userProdutorFragment2" />
     </fragment>
     <fragment
         android:id="@+id/barCodeScannerFragment"
@@ -54,8 +45,23 @@
             app:destination="@id/listAddSuperFragment" />
     </fragment>
     <fragment
-        android:id="@+id/supermarketViewFragment"
-        android:name="com.tuwiaq.mypurchases.Supermarket.SupermarketViewFragment"
-        android:label="fragment_supermarket_view"
-        tools:layout="@layout/fragment_supermarket_view" />
+        android:id="@+id/cartListProdutorFragment"
+        android:name="com.tuwiaq.mypurchases.Cart.CartListProdutorFragment"
+        android:label="CartListProdutorFragment" />
+    <fragment
+        android:id="@+id/superMarketViewFragment"
+        android:name="com.tuwiaq.mypurchases.Supermarket.SuperMarketViewFragment"
+        android:label="SuperMarketViewFragment" />
+    <fragment
+        android:id="@+id/userProdutorFragment2"
+        android:name="com.tuwiaq.mypurchases.UserProductor.UserProdutorFragment"
+        android:label="UserProdutorFragment" />
+    <fragment
+        android:id="@+id/listAddSuperFragment"
+        android:name="com.tuwiaq.mypurchases.Product.ListAddSuperFragment"
+        android:label="ListAddSuperFragment" >
+        <argument
+            android:name="codeId"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -33,8 +33,9 @@
             android:layout_weight="11"
             android:text="Cart List" />
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/product_recycler"
+        android:id="@+id/product_user_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/panel"

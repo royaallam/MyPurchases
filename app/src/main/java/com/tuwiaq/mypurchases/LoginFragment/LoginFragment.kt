@@ -11,34 +11,41 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.tuwiaq.mypurchases.Location.MapSuperMarketFragment
 import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragment
+import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragmentDirections
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
 import kotlin.reflect.typeOf
 
 
 private const val TAG = "LoginFragment"
+
 class LoginFragment : Fragment() {
 
     private lateinit var emailET: EditText
     private lateinit var passwordET: EditText
     private lateinit var signinBTN: Button
     private lateinit var resisterBTN: Button
-    private lateinit var viewModel: LoginViewModel
-    private lateinit var auth: FirebaseAuth
+   private  val viewModel: LoginViewModel by lazy { ViewModelProvider(this).get(LoginViewModel::class.java) }
+//    private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
-   var Tpye=""
+//    var type = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        auth = FirebaseAuth.getInstance()
-        firestore= FirebaseFirestore.getInstance()
+        firestore = FirebaseFirestore.getInstance()
+
     }
 
     override fun onCreateView(
@@ -66,68 +73,51 @@ class LoginFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        auth = FirebaseAuth.getInstance()
+
         signinBTN.setOnClickListener {
             val emaiETexts: String = emailET.text.toString()
             val passWords: String = passwordET.text.toString()
             if (TextUtils.isEmpty(emaiETexts) || TextUtils.isEmpty(passWords)) {
                 showToast("Enter email and password")
             } else {
-                auth.signInWithEmailAndPassword(emaiETexts, passWords)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            showToast("good job")
-//                        val fragment=MapSuperMarketFragment()
-//                        activity?.let {
-//                            it.supportFragmentManager
-//                                .beginTransaction()
-//                                .replace(R.id.fragment_container,fragment)
-//                                .addToBackStack(null)
-//                                .commit()
-//
-//
-//
-//                        }
-                            val navCon = findNavController()
+                lifecycleScope.launch {
+                    if (viewModel.loginUser(emaiETexts, passWords)){
 
-                            firestore.collection("users").get().addOnSuccessListener {
-                                it.forEach{
-                                  Tpye = it.getString("Type").toString()
-                                    Log.d(TAG, "onActivityCreated: $Tpye")
-
-                                }
+                        when(viewModel.typelogin(uid = Firebase.auth.currentUser?.uid!!)){
+                            "Supermarket" -> {
+                                val navCon = findNavController()
+                                val action = LoginFragmentDirections.actionLoginFragmentToBarCodeScannerFragment()
+                                navCon.navigate(action)
                             }
-                                if (Tpye == "Supermarket") {
-                                    navCon.navigate(R.id.action_loginFragment_to_supermarketViewFragment)
-                                } else if(Tpye == "user"){
-                                    navCon.navigate(R.id.action_loginFragment_to_mapSuperMarketFragment2)
-                                }
-                        } else {
-                            showToast("email or password is wrong")
-                            Log.e(TAG, "there was something wrong", task.exception)
+                            "user" -> {
+                                val navCon = findNavController()
+                                val action = LoginFragmentDirections.actionLoginFragmentToMapSuperMarketFragment2()
+                                navCon.navigate(action)
+                            }
+
                         }
+
                     }
+
+
+
+                }
 
 
             }
         }
+
+
+
+
         resisterBTN.setOnClickListener {
-//            val fragment=RegisterFragment()
-//            activity?.let {
-//            it.supportFragmentManager
-//                .beginTransaction()
-//                .replace(R.id.fragment_container,fragment)
-//                .addToBackStack(null)
-//                .commit()
-//        }
-//        }
+
             val navCon = findNavController()
             val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment3()
             navCon.navigate(action)
 
         }
 
-
     }
 }
+

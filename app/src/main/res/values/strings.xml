@@ -10,4 +10,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="decripation">decripation</string>
+    <string name="location">location</string>
+    <string name="supermarket_item">supermarket_item</string>
+    <string name="add">add</string>
+    <string name="product_list">Product List</string>
+    <string name="barcode">barcode</string>
+    <string name="enter_you_decipation">enter you decipation</string>
+    <string name="priec">priec</string>
+    <string name="enter_you_priec">enter you priec</string>
 </resources>

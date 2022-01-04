@@ -48,6 +48,7 @@ class barCodeScannerFragment : Fragment() {
 
     val barcodeLauncher = registerForActivityResult(ScanContract()){ result ->
         Log.d(TAG, ": ${result.contents}")
+
         val navController=findNavController()
         val action=barCodeScannerFragmentDirections.actionBarCodeScannerFragmentToListAddSuperFragment(result.contents)
         navController.navigate(action)

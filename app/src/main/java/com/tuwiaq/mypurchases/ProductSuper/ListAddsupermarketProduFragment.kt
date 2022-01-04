@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,7 +15,8 @@ import com.tuwiaq.mypurchases.R
 
 private const val TAG = "ListAddSuperFragment"
 class ListAddSuperFragment : Fragment() {
-
+    private lateinit var ProdutorIma: ImageView
+    private lateinit var UploadProIma:Button
     private lateinit var CodebarTv: TextView
     private lateinit var DecpationEd: EditText
     private lateinit var PriceEd: EditText
@@ -26,6 +24,7 @@ class ListAddSuperFragment : Fragment() {
     private lateinit var auto: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private val args:ListAddSuperFragmentArgs by navArgs()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,12 +37,14 @@ class ListAddSuperFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_list_add_pro, container, false)
+        val view = inflater.inflate(R.layout.list_addsupermarket_produ_fragment, container, false)
         Init(view)
         return view
     }
 
     private fun Init(view: View) {
+        ProdutorIma=view.findViewById(R.id.iamge_pro)
+        UploadProIma=view.findViewById(R.id.upload_imag)
         CodebarTv = view.findViewById(R.id.codebarEt)
         DecpationEd = view.findViewById(R.id.decpationEt)
         PriceEd = view.findViewById(R.id.priceRY)
