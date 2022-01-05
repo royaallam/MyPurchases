@@ -80,5 +80,8 @@
         <action
             android:id="@+id/action_productorDeatiFragment_to_cartListProdutorFragment"
             app:destination="@id/cartListProdutorFragment" />
+        <argument
+            android:name="id"
+            app:argType="string" />
     </fragment>
 </navigation>

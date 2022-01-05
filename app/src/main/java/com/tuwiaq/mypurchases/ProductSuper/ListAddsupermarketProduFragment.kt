@@ -106,22 +106,26 @@ class ListAddSuperFragment : Fragment() {
                 decpation.isEmpty() -> showToast("Please Enter a decpation")
                 price.isEmpty() -> showToast("Please Enter a Pa")
                 else -> {
-                    val user = hashMapOf(
-                        "codebar" to codebar,
-                        "decpation" to decpation,
-                        "price" to price,
-                        imageURL to ""
-                    )
+                    val product = Prodctor(codebar, decpation, price)
+//                    val user = hashMapOf(
+//                        "codebar" to codebar,
+//                        "decpation" to decpation,
+//                        "price" to price,
+//                        imageURL to ""
+//                    )
 
 // Add a new document with a generated ID
-                    firestore.collection("product")
-                        .add(user)
-                        .addOnSuccessListener { documentReference ->
-                            Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                        }
-                        .addOnFailureListener { e ->
-                            Log.w(TAG, "Error adding document", e)
-                        }
+                  val a =  firestore.collection("product").document()
+                          product.id = a.id
+
+                                  a.set(product)
+//                        .add(product)
+//                        .addOnSuccessListener { documentReference ->
+//                            Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+//                        }
+//                        .addOnFailureListener { e ->
+//                            Log.w(TAG, "Error adding document", e)
+//                        }
                     //  val fragment=
 //                 activity?.let {
 //                     it.supportFragmentManager

@@ -10,6 +10,8 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.*
+import com.google.firestore.v1.Value
+import com.tuwiaq.mypurchases.Cart.Cart
 import com.tuwiaq.mypurchases.Location.MapSuperMarketFragment
 import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.Supermarket.SuperMarkt
@@ -89,11 +91,13 @@ class RepsitoryMyPurch private constructor(context: Context) {
                     Log.w(TAG, "registerUser: Succcessful ")
                     // Create a new user with a first and last name
 
+//                    val cart= listOf<String>()
                     val user = hashMapOf(
                         "username" to userName,
                         "email" to emailEText,
                         "password" to passWord,
                         "Type" to type
+//                       "cart" to cart
 
                     )
                     firestore.collection("users").document(auth.currentUser?.uid!!)
@@ -133,5 +137,18 @@ class RepsitoryMyPurch private constructor(context: Context) {
 //           navCon.navigate(R.id.action_loginFragment_to_mapSuperMarketFragment2)
 //       }
 //   }
+
+
+    fun cartProductor( cart:Cart){
+
+        val ref =firestore.collection("Cart").document()
+        cart.id = ref.id
+        ref.set(cart)
+
+    }
+    fun cart(docId:String,id:String){
+        firestore.collection("users").document(docId).update("cart",FieldValue.arrayUnion(id))
+    }
+
 
 }

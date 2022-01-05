@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -19,11 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.tuwiaq.mypurchases.LoginFragment.LoginFragmentDirections
 import com.tuwiaq.mypurchases.R
-import com.tuwiaq.mypurchases.Supermarket.SuperMarkt
-
-
 
 
 class UserProdutorFragment : Fragment() {
@@ -48,7 +43,7 @@ class UserProdutorFragment : Fragment() {
     }
 
     fun Init(view: View) {
-        list_user_add = view.findViewById(R.id.product_user_recycler)
+        list_user_add = view.findViewById(R.id.cart_user_recycler)
 
     }
 
@@ -62,7 +57,7 @@ class UserProdutorFragment : Fragment() {
             titleProUser = prodctor
             slowProductpe.setOnClickListener {
                 val navCon = findNavController()
-                val action = UserProdutorFragmentDirections.actionUserProdutorFragment2ToProductorDeatiFragment()
+                val action = UserProdutorFragmentDirections.actionUserProdutorFragment2ToProductorDeatiFragment(prodctor.id)
                 navCon.navigate(action)
             }
 

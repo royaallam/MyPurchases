@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/image_produtor"
@@ -46,19 +46,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/image_sub" />
 
-    <EditText
-        android:id="@+id/qutity_prodctor"
-        android:layout_width="68dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/add_pro"
-        app:layout_constraintHorizontal_bias="0.602"
-        app:layout_constraintStart_toEndOf="@+id/sub_prod"
-        app:layout_constraintTop_toBottomOf="@+id/decripa_pro"
-        tools:ignore="MissingConstraints" />
-
     <ImageView
         android:id="@+id/add_pro"
         android:layout_width="85dp"
@@ -73,12 +60,22 @@
         android:id="@+id/add_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="212dp"
         android:text="addCart"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qutity_prodctor"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/qutity_prodctor"
+        android:layout_width="85dp"
+        android:layout_height="27dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/add_cart"
+        app:layout_constraintEnd_toStartOf="@+id/add_pro"
+        app:layout_constraintStart_toEndOf="@+id/sub_prod"
+        app:layout_constraintTop_toBottomOf="@+id/decripa_pro" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
