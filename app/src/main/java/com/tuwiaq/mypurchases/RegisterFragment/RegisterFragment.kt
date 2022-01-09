@@ -91,7 +91,7 @@ class RegisterFragment : Fragment() {
             val passWord: String = passwordET.text.toString()
             val passwordRE: String = repasswordET.text.toString()
             val cart=""
-
+            val user = User(userName,emaiEText,type,cart)
 
             when {
                 userName.isEmpty() -> showToast("Please Enter a userName? ")
@@ -100,7 +100,7 @@ class RegisterFragment : Fragment() {
                 passWord != passwordRE -> showToast(" Enter a Re-password is correct")
 
                 else -> {
-                    viewModel.registerUser(userName,emaiEText,passWord,type)
+                    viewModel.registerUser(userName,emaiEText,passWord,user)
                     val navCon = findNavController()
                     val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment3()
                     navCon.navigate(action)

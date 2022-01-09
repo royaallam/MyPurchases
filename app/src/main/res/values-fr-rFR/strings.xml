@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">"Mes achats "</string>
+    <string name="sign_in">"s'identifier "</string>
+    <string name="email">E-mail</string>
+    <string name="password">le mot de passe</string>
+    <string name="re_password">"re-mot de passe "</string>
+    <string name="sign_in_btm">"s'identifier "</string>
+    <string name="resister">résistante</string>
+    <string name="username">"Nom d'utilisateur "</string>
+    <string name="decripation">description</string>
+    <string name="location">emplacement</string>
+    <string name="supermarket_item">"supermarché "</string>
+    <string name="add">ajouter</string>
+    <string name="product_list">"Produit "</string>
+    <string name="barcode">code à barre</string>
+    <string name="enter_you_decipation">"entrez votre decipation "</string>
+    <string name="priec">"priec "</string>
+    <string name="enter_you_priec">"entrez votre prix "</string>
+    <string name="logout">Se déconnecter</string>
+    <string name="log_out">Se déconnecter</string>
+    <string name="change_language">"changer de langue "</string>
+    <string name="upload">"télécharger "</string>
+    <string name="supermarket">"Supermarché "</string>
+    <string name="addcart">"ajouterCart "</string>
+    <string name="barcode_pro">"code-barres_producteur "</string>
+    <string name="decripa_pro">decripation_producteur</string>
+    <string name="qutity_pro">"Quantité "</string>
+    <string name="home">domicile</string>
+    <string name="person">"personne "</string>
+    <string name="button">"bas "</string>
+    <string name="user">utilisatrice</string>
+    <string name="hello_blank_fragment">"Bonjour fragment vierge "</string>
+</resources>

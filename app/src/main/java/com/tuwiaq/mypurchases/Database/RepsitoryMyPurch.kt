@@ -5,15 +5,18 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContentProviderCompat
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.liveData
 import com.google.api.LogDescriptor
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.*
 import com.google.firestore.v1.Value
 import com.tuwiaq.mypurchases.Cart.Cart
 import com.tuwiaq.mypurchases.Location.MapSuperMarketFragment
 import com.tuwiaq.mypurchases.R
+import com.tuwiaq.mypurchases.RegisterFragment.User
 import com.tuwiaq.mypurchases.Supermarket.SuperMarkt
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
@@ -37,77 +40,84 @@ class RepsitoryMyPurch private constructor(context: Context) {
             }
         }
 
+
         fun get(): RepsitoryMyPurch {
             return INSTANCE
                 ?: throw IllegalStateException("My purchases Repositor must be initialized")
         }
     }
 
-    //////////////////-----------//////////////////////
-   suspend fun loginUser(emaiETexts: String, passWords: String) : Boolean {
+    //////////////////------log in -----//////////////////////
+    suspend fun loginUser(emaiETexts: String, passWords: String) : Boolean {
         var x: AuthResult?  = null
         try {
-           x = auth.signInWithEmailAndPassword(emaiETexts, passWords)
-              .addOnCompleteListener { task ->
-                  if (task.isSuccessful) {
-                      Log.e(TAG, "loginUser: good job ")
+            x = auth.signInWithEmailAndPassword(emaiETexts, passWords)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.e(TAG, "loginUser: good job ")
 
 
-                  } else {
-                      Log.e(TAG, "email or password is wrong")
+                    } else {
+                        Log.e(TAG, "email or password is wrong")
 
 
-                  }
-              }.await()
+                    }
+                }.await()
 
-      }catch (e:Exception){
+        }catch (e:Exception){
             Log.e(TAG, "loginUser: error ",e )
-      }
+        }
 
-       return x?.user!= null
+        return x?.user!= null
     }
 
     suspend fun typelogin(uid: String): String {
-        var Tpye = ""
+        var Type = ""
 
         firestore.collection("users").document(uid).get().addOnSuccessListener {
 
-            Tpye = it.getString("Type").toString()
-            Log.d(TAG, "onActivityCreated: $Tpye")
+            Type = it.getString("type").toString()
+            Log.d(TAG, "onActivityCreated: $Type")
 
         }.await()
 
-        return Tpye
+        return Type
     }
 
 
-    ////////////------------///////////////////////
+    ////////////-------register-----///////////////////////
 
-    fun registerUser(userName: String, emailEText: String, passWord: String, type: String) {
+    fun registerUser(userName: String, emailEText: String, passWord: String,user: User) {
 
         auth.createUserWithEmailAndPassword(emailEText, passWord)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.w(TAG, "registerUser: Succcessful ")
                     // Create a new user with a first and last name
-
+//                    val id=firestore.collection("user").document().id
 //                    val cart= listOf<String>()
-                    val user = hashMapOf(
-                        "username" to userName,
-                        "email" to emailEText,
-                        "password" to passWord,
-                        "Type" to type
+//                    val user = hashMapOf(
+//                        "id" to id,
+//                        "username" to userName,
+//                        "email" to emailEText,
+//                        "password" to passWord,
+//                        "Type" to type,
 //                       "cart" to cart
+//
+//                    )
+                    val firebaseUser = task.result?.user
+                    firebaseUser?.let {
+                        val ref =  firestore.collection("users").document(it.uid)
+                        user.id = it.uid
+                        ref.set(user)
+                            .addOnSuccessListener { documentReference ->
+                                Log.d(TAG, "DocumentSnapshot added succssfully")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.w(TAG, "Error adding document", e)
+                            }
+                    }
 
-                    )
-                    firestore.collection("users").document(auth.currentUser?.uid!!)
-                        .set(user)
-                        .addOnSuccessListener { documentReference ->
-                            Log.d(TAG, "DocumentSnapshot added succssfully")
-                        }
-                        .addOnFailureListener { e ->
-                            Log.w(TAG, "Error adding document", e)
-                        }
 
                 } else {
                     Log.e(TAG, "there was something wrong", task.exception)
@@ -122,21 +132,6 @@ class RepsitoryMyPurch private constructor(context: Context) {
     }
 
 
-//   fun type(){
-//       firestore.collection("users").get().addOnSuccessListener {
-//           it.forEach{
-//             val  Tpye = it.getString("Type").toString()
-//               Log.d(com.tuwiaq.mypurchases.LoginFragment.TAG, "onActivityCreated: $Tpye")
-//
-//           }
-//       }
-//       if (Tpye == "Supermarket") {
-//           navCon.navigate(R.id.action_loginFragment_to_barCodeScannerFragment)
-//           Log.d(com.tuwiaq.mypurchases.LoginFragment.TAG, "onActivityCreated: up")
-//       } else if(Tpye == "user"){
-//           navCon.navigate(R.id.action_loginFragment_to_mapSuperMarketFragment2)
-//       }
-//   }
 
 
     fun cartProductor( cart:Cart){
@@ -147,7 +142,26 @@ class RepsitoryMyPurch private constructor(context: Context) {
 
     }
     fun cart(docId:String,id:String){
+        val a = hashMapOf<String, String>(
+            "prodId" to id
+        )
         firestore.collection("users").document(docId).update("cart",FieldValue.arrayUnion(id))
+    }
+
+    //---------Rec Supermarket-----------//
+
+
+    suspend fun EnentChangeListener():LiveData<List<SuperMarkt>>{
+       return liveData {
+           val datalist = firestore.collection("users").whereEqualTo("type", "Supermarket")
+
+                .get()
+                .await().toObjects(SuperMarkt::class.java)
+
+           Log.d(TAG, "EnentChangeListener: $datalist")
+            emit(datalist)
+        }
+
     }
 
 

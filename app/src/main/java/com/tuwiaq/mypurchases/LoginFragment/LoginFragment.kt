@@ -37,16 +37,9 @@ class LoginFragment : Fragment() {
     private lateinit var passwordET: EditText
     private lateinit var signinBTN: Button
     private lateinit var resisterBTN: Button
-   private  val viewModel: LoginViewModel by lazy { ViewModelProvider(this).get(LoginViewModel::class.java) }
-//    private lateinit var auth: FirebaseAuth
-    private lateinit var firestore: FirebaseFirestore
-//    var type = ""
+    private  val viewModel: LoginViewModel by lazy { ViewModelProvider(this).get(LoginViewModel::class.java) }
+    var type = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        firestore = FirebaseFirestore.getInstance()
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -73,7 +66,6 @@ class LoginFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         signinBTN.setOnClickListener {
             val emaiETexts: String = emailET.text.toString()
             val passWords: String = passwordET.text.toString()
@@ -82,18 +74,25 @@ class LoginFragment : Fragment() {
             } else {
                 lifecycleScope.launch {
                     if (viewModel.loginUser(emaiETexts, passWords)){
-
+                        Log.d(TAG, "onActivityCreated: scuuell")
                         when(viewModel.typelogin(uid = Firebase.auth.currentUser?.uid!!)){
                             "Supermarket" -> {
                                 val navCon = findNavController()
                                 val action = LoginFragmentDirections.actionLoginFragmentToBarCodeScannerFragment()
                                 navCon.navigate(action)
+                                Log.d(TAG, "onActivityCreated: scuuell3")
+
                             }
                             "user" -> {
                                 val navCon = findNavController()
                                 val action = LoginFragmentDirections.actionLoginFragmentToMapSuperMarketFragment2()
                                 navCon.navigate(action)
+                                Log.d(TAG, "onActivityCreated: scuuell2")
                             }
+                            else -> {
+                                Log.d(
+                                    TAG,
+                                    "onActivityCreated: ${viewModel.typelogin(uid = Firebase.auth.currentUser?.uid!!)} ")}
 
                         }
 

@@ -9,8 +9,8 @@ import com.tuwiaq.mypurchases.Database.RepsitoryMyPurch
 class RegisterViewModel : ViewModel() {
     private val repsitorymypurch= RepsitoryMyPurch.get()
 
-    fun registerUser(userName: String, emailEText: String, passWord: String, type: String){
-        repsitorymypurch.registerUser(userName, emailEText, passWord, type)
+    fun registerUser(userName: String, emailEText: String, passWord: String, user: User){
+        repsitorymypurch.registerUser(userName, emailEText, passWord, user)
     }
 
 

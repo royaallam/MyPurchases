@@ -17,5 +17,18 @@
     <string name="barcode">barcode</string>
     <string name="enter_you_decipation">enter you decipation</string>
     <string name="priec">priec</string>
-    <string name="enter_you_priec">enter you priec</string>
+    <string name="enter_you_priec">enter your price</string>
+    <string name="logout">logout</string>
+    <string name="log_out">Log out</string>
+    <string name="decripa_pro">decripa_pro</string>
+    <string name="barcode_pro">barcode_pro</string>
+    <string name="addcart">addCart</string>
+    <string name="qutity_pro">qutity_pro</string>
+    <string name="user">User</string>
+    <string name="supermarket">Supermarket</string>
+    <string name="upload">upload</string>
+    <string name="button">Button</string>
+    <string name="change_language">change language</string>
+    <string name="home">home</string>
+    <string name="person">person</string>
 </resources>

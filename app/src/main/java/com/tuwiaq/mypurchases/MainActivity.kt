@@ -50,17 +50,8 @@ class MainActivity : AppCompatActivity() {
             }
 
 
-//            if (type == SUPERMARKET){
-//                findNavController().navigate(R.id.action_loginFragment_to_barCodeScannerFragment)
-//            }else if (type == USER){
-//                findNavController().navigate(R.id.action_loginFragment_to_mapSuperMarketFragment2)
-//            }
 
         }
-//
-//        val nav=findNavController(R.id.my_nav)
-//            val bottomNavigationView:BottomNavigationView=findViewById(R.id.my_nav)
-//        bottomNavigationView.setupWithNavController(nav)
-//        setupActionBarWithNavController(nav)
+
     }
 }

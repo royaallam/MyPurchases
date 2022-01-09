@@ -15,13 +15,9 @@ class SuperMarketViewViewModel : ViewModel() {
 
     private val repsitorymypurch= RepsitoryMyPurch.get()
 
-//    private var valueLiveData =MutableLiveData<String>()
-//    var userInfo:LiveData<ArrayList<SuperMarkt>> =
-//        repsitorymypurch.EnentChangeListener()
-//    }
 
 
-//     fun EnentChangeListener() {
-//        repsitorymypurch.EnentChangeListener()
-//}
+    suspend fun EnentChangeListener() : LiveData<List<SuperMarkt>> {
+      return  repsitorymypurch.EnentChangeListener()
+}
 }

@@ -7,12 +7,12 @@ class LoginViewModel : ViewModel() {
     private val repsitorymypurch= RepsitoryMyPurch.get()
 
 
-   suspend fun loginUser(emaiETexts:String, passWords:String):Boolean{
-       return repsitorymypurch.loginUser(emaiETexts, passWords)
+    suspend fun loginUser(emaiETexts:String, passWords:String):Boolean{
+        return repsitorymypurch.loginUser(emaiETexts, passWords)
     }
 
     suspend  fun  typelogin(uid:String):String{
-      return  repsitorymypurch.typelogin(uid)
+        return  repsitorymypurch.typelogin(uid)
 
     }
 

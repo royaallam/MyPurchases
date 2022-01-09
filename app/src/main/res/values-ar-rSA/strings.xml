@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">مشترياتي</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="email">"الايميل "</string>
+    <string name="password">كلمة المرور</string>
+    <string name="resister">تسجيل</string>
+    <string name="sign_in_btm">تسجيل الدخول</string>
+    <string name="username">"اسم المستخدم "</string>
+    <string name="re_password">"اعادة كلمة المرور "</string>
+    <string name="decripation">"الوصف "</string>
+    <string name="location">"الموقع "</string>
+    <string name="supermarket_item">"سوبرماركت "</string>
+    <string name="add">"اضف "</string>
+    <string name="product_list">"المنتجات "</string>
+    <string name="barcode">باركود</string>
+    <string name="enter_you_decipation">ادخل الوصف؟</string>
+    <string name="priec">السعر</string>
+    <string name="enter_you_priec">ادخل السعر</string>
+    <string name="logout">الخروج</string>
+    <string name="log_out">الخروج</string>
+    <string name="decripa_pro">"وصف المنتجات "</string>
+    <string name="barcode_pro">"باكورد المنتجات "</string>
+    <string name="addcart">"اضف السلة "</string>
+    <string name="qutity_pro">"الكمية "</string>
+    <string name="user">"المستخدم "</string>
+    <string name="supermarket">سوبرماركت</string>
+    <string name="upload">"تحميل "</string>
+    <string name="change_language">"اختار اللغة "</string>
+    <string name="home">بيت</string>
+    <string name="person">شخص</string>
+    <string name="button">زر</string>
+    <string name="hello_blank_fragment">"اهلا بك "</string>
+</resources>

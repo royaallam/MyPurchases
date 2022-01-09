@@ -47,7 +47,11 @@
     <fragment
         android:id="@+id/cartListProdutorFragment"
         android:name="com.tuwiaq.mypurchases.Cart.CartListProdutorFragment"
-        android:label="CartListProdutorFragment" />
+        android:label="CartListProdutorFragment" >
+        <action
+            android:id="@+id/action_cartListProdutorFragment_to_sigoutFragment"
+            app:destination="@id/sigoutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/superMarketViewFragment"
         android:name="com.tuwiaq.mypurchases.Supermarket.SuperMarketViewFragment"
@@ -71,6 +75,9 @@
         <argument
             android:name="codeId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_listAddSuperFragment_to_sigoutFragment"
+            app:destination="@id/sigoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/productorDeatiFragment"
@@ -84,4 +91,9 @@
             android:name="id"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/sigoutFragment"
+        android:name="com.tuwiaq.mypurchases.LoginFragment.SigoutFragment"
+        android:label="fragment_sigout"
+        tools:layout="@layout/fragment_sigout" />
 </navigation>

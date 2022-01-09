@@ -1,7 +1,7 @@
 package com.tuwiaq.mypurchases.Productorslow
 
 
-import android.content.ContentValues.TAG
+
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -21,6 +21,7 @@ import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragmentDirections
 
 
+private const val TAG = "ProductorDeatiFragment"
 class ProductorDeatiFragment : Fragment() {
 
 
@@ -34,6 +35,7 @@ class ProductorDeatiFragment : Fragment() {
     private lateinit var addCart:Button
     private lateinit var auto: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
+
 
     private val proviewmodel:ProductorDeatiFragmentViewmodle by lazy { ViewModelProvider(this).get(ProductorDeatiFragmentViewmodle::class.java) }
 
@@ -70,8 +72,14 @@ class ProductorDeatiFragment : Fragment() {
         super.onStart()
 
 //        firestore.collection("product").document(uid).get()
-//        firestore.collection("users").document(auth.currentUser?.uid!!)
-//                        .set(user)
+        firestore.collection("users")
+                        .get().addOnSuccessListener { q ->
+                q.documents.forEach {
+                               prodId = it.getString("id").toString()
+                    Log.d(TAG, "id: $prodId")
+
+            }
+            }
 //                        .addOnSuccessListener { documentReference ->
 //                            Log.d(TAG, "DocumentSnapshot added succssfully")
 //                        }
@@ -80,7 +88,6 @@ class ProductorDeatiFragment : Fragment() {
 
         firestore.collection("product").document(productId)
             .get().addOnSuccessListener {
-                prodId = it.getString("id").toString()
                 barCodePro.text = it.getString("codebar")
                 decrpationPrp.text=it.getString("decpation")
             }
@@ -98,7 +105,7 @@ class ProductorDeatiFragment : Fragment() {
         }
         addCart.setOnClickListener {
             Toast.makeText(requireContext(),"addcart", Toast.LENGTH_LONG).show()
-           proviewmodel.cart(args.id,productId)
+           proviewmodel.cart(prodId,args.id)
             val navCon = findNavController()
             val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToCartListProdutorFragment()
             navCon.navigate(action)

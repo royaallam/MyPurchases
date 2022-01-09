@@ -65,4 +65,10 @@ class CartListProdutorFragment : Fragment() {
 
         override fun getItemCount(): Int =cartList.size
     }
+
+
+//    private  fun sumProductor(){
+//        firestore.collection("product").document("id").get()
+//
+//    }
 }
