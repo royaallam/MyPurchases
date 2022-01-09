@@ -7,18 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.tuwiaq.mypurchases.LoginFragment.LoginViewModel
 import com.tuwiaq.mypurchases.R
+import com.tuwiaq.mypurchases.RegisterFragment.User
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 
 class CartListProdutorFragment : Fragment() {
     private lateinit var cart_list_reclyec:RecyclerView
-    private  val cartviewModel: CartListProdutorViewModel by lazy { ViewModelProvider(this).get(CartListProdutorViewModel::class.java) }
+    private  val cartViewModel: CartListProdutorViewModel by lazy { ViewModelProvider(this).get(CartListProdutorViewModel::class.java) }
     private lateinit var firestore: FirebaseFirestore
     private lateinit var cart:Cart
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,9 +77,16 @@ class CartListProdutorFragment : Fragment() {
         override fun getItemCount(): Int =cartList.size
     }
 
-
-//    private  fun sumProductor(){
-//        firestore.collection("product").document("id").get()
-//
-//    }
-}
+//    private  fun CartHolder.sumProductor() {
+//        lifecycleScope.launch(Dispatchers.IO){
+//            val productorList:MutableList<String> =
+//            (firestore.collection("users").document(Firebase.auth.currentUser?.uid!!)
+//                .get()
+//                .await()
+//                .toObject(User::class.java)
+//                ?.cart?: emptyList() as MutableList<String>
+//            productorList += productor.id
+//                    firestore.collection("users.").document(Firebase.auth.currentUser?.uid!!)
+//                    updata("cart",productorList)
+//        }
+    }

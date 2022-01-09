@@ -1,7 +1,9 @@
 package com.tuwiaq.mypurchases.Product
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
+import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -11,14 +13,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
 import com.tuwiaq.mypurchases.R
-import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragmentDirections
 import com.tuwiaq.mypurchases.UserProductor.Prodctor
 import java.util.*
 
@@ -32,11 +32,11 @@ class ListAddSuperFragment : Fragment() {
     private lateinit var DecpationEd: EditText
     private lateinit var PriceEd: EditText
     private lateinit var AddBtn: Button
-    private lateinit var btab: Button
+    private lateinit var selectImage: Button
     private lateinit var auto: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private lateinit var prodctor: Prodctor
-    var imageURL=""
+//    var imageURL=Uri
     var filepath: Uri?=null
     private val iamgestorage = FirebaseStorage.getInstance()
         var storageRef = iamgestorage.reference
@@ -61,13 +61,13 @@ class ListAddSuperFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.list_addsupermarket_produ_fragment, container, false)
         Init(view)
-        return view
+         return view
     }
 
     private fun Init(view: View) {
         ProdutorIma=view.findViewById(R.id.iamge_pro)
-        UploadProIma=view.findViewById(R.id.upload_imag)
-        btab=view.findViewById(R.id.bta)
+        UploadProIma=view.findViewById(R.id.uplaed_image)
+        selectImage=view.findViewById(R.id.select_image)
         CodebarTv = view.findViewById(R.id.codebarEt)
         DecpationEd = view.findViewById(R.id.decpationEt)
         PriceEd = view.findViewById(R.id.priceRY)
@@ -81,17 +81,14 @@ class ListAddSuperFragment : Fragment() {
         if (currentUser != null) {
             Log.d(TAG, "hi ${currentUser.displayName}")
         }
-                UploadProIma.setOnClickListener{
-            openGallery.launch("image/*")
-            Intent(Intent.ACTION_GET_CONTENT).also {
-                it.type="image/*"
-               startActivityForResult(it,REQEST_CODE_IMAGE_PICK)
-            }
-//                    uploadImageToStorage()
-        }
-        btab.setOnClickListener {
-            uploadImageToStorage()
-        }
+//                selectImage.setOnClickListener{
+//
+//
+//                    selectImage()
+//        }
+//                UploadProIma.setOnClickListener {
+//                    uploadImage()
+//        }
 
 
 
@@ -141,47 +138,71 @@ class ListAddSuperFragment : Fragment() {
 
 
     }
+//    private fun selectImage(){
+//        val intent=Intent()
+//        intent.type="image/*"
+//        intent.action=Intent.ACTION_GET_CONTENT
+//        startActivityForResult(intent,100)
+//    }
+//
+//    private fun uploadImage() {
+//      val progressDialog=ProgressDialog(requireContext())
+//        progressDialog.setMessage("Uploading File....")
+//        progressDialog.setCancelable(false)
+//        progressDialog.show()
+//        val formater=SimpleDateFormat("yyyy_MM_dd")
+//
+//    }
 
-         fun  uploadImageToStorage(){
-         val date = Date()
-         val ref = storageRef.child("images/image_$date.jpg")
-        val uploadTask = ref.putFile(filepath!!)
-
-         uploadTask.continueWithTask { task ->
-             if (!task.isSuccessful) {
-                 task.exception?.let {
-                     throw it
-                 }
-             }
-             ref.downloadUrl
-         }.addOnCompleteListener { task ->
-             if (task.isSuccessful) {
-
-                 val downloadUri = task.result
-                 imageURL = downloadUri.toString()
-
-                 firestore.collection("product").document()
-                     .update("imageURL",downloadUri)
-             } else {
-                 // Handle failures
-                 // ...
-             }
-         }
-    }
+//    fun  uploadImageToStorage(){
+//         val date = Date()
+//         val ref = storageRef.child("images/image_$date.jpg")
+//        val uploadTask = ref.putFile(filepath!!)
+//
+//         uploadTask.continueWithTask { task ->
+//             if (!task.isSuccessful) {
+//                 task.exception?.let {
+//                     throw it
+//                 }
+//             }
+//             ref.downloadUrl
+//         }.addOnCompleteListener { task ->
+//             if (task.isSuccessful) {
+//
+//                 val downloadUri = task.result
+//                 imageURL = downloadUri.toString()
+//
+//                 firestore.collection("product").document()
+//                     .update("imageURL",downloadUri)
+//             } else {
+//                 // Handle failures
+//                 // ...
+//             }
+//         }
+//    }
     private fun showToast(msg: String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
 
     }
-        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-             data?.data?.let {
-                filepath= it
-                 ProdutorIma.setImageURI(it)
-             }
-
-        }
-    }
+//        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+//             data?.data?.let {
+//                filepath= it
+//                 ProdutorIma.setImageURI(it)
+//             }
+//
+//        }
+//    }
+//            override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode ==100 && resultCode == Activity.RESULT_OK) {
+//               imageURL=data?.data!!
+//                 ProdutorIma.setImageURI(imageURL)
+//
+//
+//        }
+//    }
 
 
 }

@@ -31,4 +31,6 @@
     <string name="change_language">change language</string>
     <string name="home">home</string>
     <string name="person">person</string>
+    <string name="uploed">uploed</string>
+    <string name="select">select</string>
 </resources>

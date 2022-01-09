@@ -164,5 +164,10 @@ class RepsitoryMyPurch private constructor(context: Context) {
 
     }
 
+    ////----------cart----------///
+//    private  fun sumProductor() {
+//        val produvtorList:MutableList <String> = (firestore.collection("users").document(f))
+//    }
+
 
 }
