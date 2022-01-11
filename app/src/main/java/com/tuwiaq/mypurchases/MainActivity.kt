@@ -3,6 +3,7 @@ package com.tuwiaq.mypurchases
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -14,6 +15,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.tuwiaq.mypurchases.Cart.CartListProdutorFragment
+import com.tuwiaq.mypurchases.LoginFragment.SigoutFragment
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,6 +27,11 @@ private const val USER="user"
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var bottomNavigationView: BottomNavigationView
+
+
+
+
     var type = ""
     private val viewModel by lazy { ViewModelProvider(this)[MainActivityViewModel::class.java] }
 
@@ -32,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         auth = FirebaseAuth.getInstance()
+        bottomNavigationView=findViewById(R.id.bottomNavigationView)
 
         val navController = Navigation.findNavController(this, R.id.fragment_container)
         if(!auth.currentUser?.uid.isNullOrBlank()){
@@ -48,10 +57,11 @@ class MainActivity : AppCompatActivity() {
 
                 }
             }
-
-
-
         }
+
+
+
 
     }
 }
+

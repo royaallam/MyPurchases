@@ -1,33 +1,36 @@
 package com.tuwiaq.mypurchases.Database
 
 import android.content.Context
+import android.net.Uri
 import android.util.Log
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.google.api.LogDescriptor
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.*
-import com.google.firestore.v1.Value
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.tuwiaq.mypurchases.Cart.Cart
-import com.tuwiaq.mypurchases.Location.MapSuperMarketFragment
-import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.RegisterFragment.User
 import com.tuwiaq.mypurchases.Supermarket.SuperMarkt
+import com.tuwiaq.mypurchases.UserProductor.Prodctor
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 
 import java.lang.IllegalStateException
+import java.util.*
 
 private const val TAG = "RepsitoryMyPurch"
 
 class RepsitoryMyPurch private constructor(context: Context) {
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
     val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+    //var filepath: Uri? =null
+    private val iamgestorage = FirebaseStorage.getInstance()
+
+    var storageRef = iamgestorage.reference
 
     companion object {
 
@@ -93,18 +96,6 @@ class RepsitoryMyPurch private constructor(context: Context) {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.w(TAG, "registerUser: Succcessful ")
-                    // Create a new user with a first and last name
-//                    val id=firestore.collection("user").document().id
-//                    val cart= listOf<String>()
-//                    val user = hashMapOf(
-//                        "id" to id,
-//                        "username" to userName,
-//                        "email" to emailEText,
-//                        "password" to passWord,
-//                        "Type" to type,
-//                       "cart" to cart
-//
-//                    )
                     val firebaseUser = task.result?.user
                     firebaseUser?.let {
                         val ref =  firestore.collection("users").document(it.uid)
@@ -130,10 +121,54 @@ class RepsitoryMyPurch private constructor(context: Context) {
         auth.currentUser?.updateProfile(updateProfile)
 
     }
+    //--------image-------////////
+   fun  uploadImageToStorage(filepath: Uri,id:String) {
+        val product = Prodctor()
+//        val pro = Prodctor()
+        filepath.let {
+            val date = Date()
+            val ref = storageRef.child("images/image_$date.jpg")
+            val uploadTask = ref.putFile(it)
+
+            uploadTask.continueWithTask { task ->
+                if (!task.isSuccessful) {
+                    task.exception?.let {
+                        throw it
+                    }
+                }
+                ref.downloadUrl
+            }.addOnSuccessListener {
+                val imageURL = it.toString()
+                product.imageURL = imageURL
+                Log.d(TAG, "uploadImageToStorage: $imageURL")
+                firestore.collection("product").document(id)
+                    .update("imageURL", imageURL)
+
+            }
+
+
+
+        }
+    }
+
+    //----------sinout ---------///
+//    suspend fun Profile() {
+//      val userInfo=  firestore.collection("users")
+//            .document(Firebase.auth.currentUser?.uid!!)
+//        val user=userInfo.get().await().toObject(User::class.java)
+//
+//
+//
+//
+//
+//
+//    }
 
 
 
 
+
+//----------cart---------///////
     fun cartProductor( cart:Cart){
 
         val ref =firestore.collection("Cart").document()

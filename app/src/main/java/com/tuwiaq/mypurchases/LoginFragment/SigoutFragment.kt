@@ -1,5 +1,6 @@
 package com.tuwiaq.mypurchases.LoginFragment
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.SharedPreferences
 import android.content.res.Configuration
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager.getDefaultSharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -40,8 +42,14 @@ class SigoutFragment : Fragment() {
 
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        loadLocate()
+    }
+
     override fun onStart() {
         super.onStart()
+     showChangerLang()
         singout.setOnClickListener {
             auth.signOut()
 //            when(sigoutviewModel.(uid = Firebase.auth.currentUser?.uid!!)){
@@ -82,16 +90,21 @@ class SigoutFragment : Fragment() {
 
 
     private fun setLocate(Lang:String){
-//    val locale=Locale(Lang)
-//        Locale.setDefault(locale)
-//       val  conf=Configuration()
-//        conf.locale=locale
-//        getBaseContext
-//        SharedPreferences.Editor=getSh
+    val locale=Locale(Lang)
+        Locale.setDefault(locale)
+       val  config=Configuration()
+        config.locale=locale
 
 
-    }
+        context?.resources?.updateConfiguration(config,context?.resources?.displayMetrics)
+        getDefaultSharedPreferences(context).edit()
+        .putString("PREF_CHANGE_LANG_KEY",Lang)
+        .apply()
+     }
     private fun loadLocate(){
+        val shar=getDefaultSharedPreferences(context)
+        val language=shar.getString("PREF_CHANGE_LANG_KEY","")!!
+        setLocate(language)
     }
 
 

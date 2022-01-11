@@ -7,12 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
@@ -48,13 +51,18 @@ class UserProdutorFragment : Fragment() {
     }
 
     inner class UserprodutorHolder(view: View) : RecyclerView.ViewHolder(view) {
-     //   val iamgePro: ImageView = itemView.findViewById(R.id.pro_item_iamg)
+        val iamgePro: ImageView = itemView.findViewById(R.id.pro_item_iamg)
         val decripation: TextView = itemView.findViewById(R.id.decrpation_item)
         val  slowProductpe:Button=itemView.findViewById(R.id.button)
 
         private lateinit var titleProUser: Prodctor
         fun bind(prodctor: Prodctor) {
             titleProUser = prodctor
+//            firestore.collection("product").
+//            document(Firebase.auth.currentUser?.uid!!).get().addOnSuccessListener {
+//                val prodctor=it.toObject(Prodctor::class.java)!!
+//                iamgePro.load(prodctor.imageURL)
+//            }
             slowProductpe.setOnClickListener {
                 val navCon = findNavController()
                 val action = UserProdutorFragmentDirections.actionUserProdutorFragment2ToProductorDeatiFragment(prodctor.id)
@@ -100,6 +108,7 @@ class UserProdutorFragment : Fragment() {
 
 
     }
+
 
 
     }

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/image_prod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -23,24 +23,55 @@
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/image_prod"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/delet_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_baseline_clear_24"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="371dp"
         tools:layout_editor_absoluteY="16dp" />
 
+    <ImageView
+        android:id="@+id/sub_imag"
+        android:layout_width="42dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/prince_imag"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toEndOf="@+id/image_prod"
+        app:layout_constraintTop_toBottomOf="@+id/name_productoe"
+        app:srcCompat="@drawable/image_sub" />
+
     <TextView
-        android:id="@+id/prince_productor"
-        android:layout_width="85dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
+        android:id="@+id/prince_imag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        tools:layout_editor_absoluteY="78dp" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="227dp"
+        tools:layout_editor_absoluteY="77dp" />
+
+    <ImageView
+        android:id="@+id/add_imag"
+        android:layout_width="45dp"
+        android:layout_height="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toEndOf="@+id/prince_imag"
+        app:srcCompat="@drawable/image_add"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="77dp" />
+
+    <TextView
+        android:id="@+id/qutit_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="323dp"
+        tools:layout_editor_absoluteY="113dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
