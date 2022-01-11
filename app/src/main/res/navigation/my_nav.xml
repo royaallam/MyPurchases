@@ -83,6 +83,9 @@
         <action
             android:id="@+id/action_productorDeatiFragment_to_sigoutFragment"
             app:destination="@id/sigoutFragment" />
+        <action
+            android:id="@+id/action_productorDeatiFragment_to_cartListProdutorFragment"
+            app:destination="@id/cartListProdutorFragment" />
     </fragment>
     <fragment
         android:id="@+id/sigoutFragment"

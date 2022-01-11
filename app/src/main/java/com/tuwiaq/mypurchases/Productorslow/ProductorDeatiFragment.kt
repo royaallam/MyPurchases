@@ -35,6 +35,7 @@ class ProductorDeatiFragment : Fragment() {
     private lateinit var addCart:Button
     private lateinit var auto: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
+    private lateinit var preBut: Button
 
 
     private val proviewmodel:ProductorDeatiFragmentViewmodle by lazy { ViewModelProvider(this).get(ProductorDeatiFragmentViewmodle::class.java) }
@@ -66,6 +67,7 @@ class ProductorDeatiFragment : Fragment() {
        addPro=view.findViewById(R.id.add_pro)
        subPro=view.findViewById(R.id.sub_prod)
       addCart=view.findViewById(R.id.add_cart)
+       preBut=view.findViewById(R.id.profel)
     }
 
     override fun onStart() {
@@ -103,11 +105,16 @@ class ProductorDeatiFragment : Fragment() {
             numPro.text= count.toString()
 
         }
+        preBut.setOnClickListener {
+            val navCon = findNavController()
+            val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToSigoutFragment()
+            navCon.navigate(action)
+        }
         addCart.setOnClickListener {
             Toast.makeText(requireContext(),"addcart", Toast.LENGTH_LONG).show()
 //           proviewmodel.cart(prodId,args.id)
             val navCon = findNavController()
-            val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToSigoutFragment()
+            val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToCartListProdutorFragment()
             navCon.navigate(action)
         }
 

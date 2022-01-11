@@ -20,6 +20,7 @@ import androidx.preference.PreferenceManager.getDefaultSharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.tuwiaq.mypurchases.MainActivity
 import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragmentDirections
 import com.tuwiaq.mypurchases.RegisterFragment.User
@@ -84,7 +85,9 @@ class SigoutFragment : Fragment() {
 
         choseLang.setOnClickListener {
             showChangerLang()
-
+//            val intent=Intent(requireContext(),MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
         }
 
         singout.setOnClickListener {

@@ -77,7 +77,8 @@ class CartListProdutorFragment : Fragment() {
         override fun onBindViewHolder(holder: CartHolder, position: Int) {
             val cartU = cartList[position]
             holder.decrProdutor!!.text=StringBuilder().append(cartU)
-
+            holder.quantity!!.text=StringBuilder().append(cartU)
+            holder.prince!!.text=StringBuilder().append(cartU)
         }
 
         override fun getItemCount(): Int =cartList.size

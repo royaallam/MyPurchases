@@ -3,6 +3,7 @@ package com.tuwiaq.mypurchases.Database
 import android.content.Context
 import android.net.Uri
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.google.firebase.auth.AuthResult
@@ -95,6 +96,7 @@ class RepsitoryMyPurch private constructor(context: Context) {
         auth.createUserWithEmailAndPassword(emailEText, passWord)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                 //   Toast.makeText("context","job",Toast.LENGTH_LONG)
                     Log.w(TAG, "registerUser: Succcessful ")
                     val firebaseUser = task.result?.user
                     firebaseUser?.let {
