@@ -152,17 +152,19 @@ class RepsitoryMyPurch private constructor(context: Context) {
     }
 
     //----------sinout ---------///
-//    suspend fun Profile() {
-//      val userInfo=  firestore.collection("users")
-//            .document(Firebase.auth.currentUser?.uid!!)
-//        val user=userInfo.get().await().toObject(User::class.java)
-//
-//
-//
-//
-//
-//
-//    }
+    suspend fun Profile():LiveData<User> {
+        return liveData {
+            val userInfo=  firestore.collection("users")
+                .document(Firebase.auth.currentUser?.uid!!)
+              .get().await().toObject(User::class.java)
+          //  Log.d(TAG, "Profile: $userInfo")
+
+            if (userInfo!=null){
+                emit(userInfo)
+            }
+
+        }
+    }
 
 
 
@@ -203,6 +205,19 @@ class RepsitoryMyPurch private constructor(context: Context) {
 //    private  fun sumProductor() {
 //        val produvtorList:MutableList <String> = (firestore.collection("users").document(f))
 //    }
+    ////////prductor
+//    suspend fun EnentChangeListeneriAM(id: String):Prodctor? {
+//
+//    return    firestore.collection("product").document(id)
+//
+//            .get()
+//            .await()
+//            .toObject(Prodctor::class.java)
+//
+//    }
 
 
-}
+    }
+
+
+

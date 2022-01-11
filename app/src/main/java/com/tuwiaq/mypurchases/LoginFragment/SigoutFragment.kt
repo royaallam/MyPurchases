@@ -2,6 +2,7 @@ package com.tuwiaq.mypurchases.LoginFragment
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
@@ -10,8 +11,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager.getDefaultSharedPreferences
 import com.google.firebase.auth.FirebaseAuth
@@ -19,14 +22,30 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragmentDirections
+import com.tuwiaq.mypurchases.RegisterFragment.User
+import kotlinx.coroutines.launch
 import java.util.*
 
-
+private const val TAG = "SigoutFragment"
 class SigoutFragment : Fragment() {
 
     private lateinit var singout:TextView
-    private  val viewModelSinout: sigoutviewModel by lazy { ViewModelProvider(this).get(viewModelSinout::class.java) }
+//    private  val viewModelSinout: sigoutviewModel by lazy { ViewModelProvider(this).get(viewModelSinout::class.java) }
     private lateinit var auth: FirebaseAuth
+    private lateinit var user: User
+    private lateinit var usertV:TextView
+    private lateinit var emailtv:TextView
+    private lateinit var choseLang:Button
+    val viewModel:sigoutviewModel by lazy { ViewModelProvider(this).get(sigoutviewModel::class.java) }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        user= User()
+        loadLocate()
+
+
+    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,24 +53,42 @@ class SigoutFragment : Fragment() {
     ): View? {
         val view=inflater.inflate(R.layout.fragment_sigout,container,false)
         Init(view)
+        lifecycleScope.launch {
+
+            viewModel.Profile().observe(
+                viewLifecycleOwner
+            ) {
+                usertV.text = it.userName
+                emailtv.text=it.emailEText
+                Log.d(TAG, "onCreateView: ${it.userName}")
+            }
+
+        }
         return view
     }
     fun Init(view: View){
         singout=view.findViewById(R.id.logout_tV)
+        usertV=view.findViewById(R.id.user_name)
+        emailtv=view.findViewById(R.id.email_tv)
+        choseLang=view.findViewById(R.id.chose_lan)
 
 
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        loadLocate()
-    }
+
+
 
     override fun onStart() {
         super.onStart()
-     showChangerLang()
+
+
+        choseLang.setOnClickListener {
+            showChangerLang()
+
+        }
+
         singout.setOnClickListener {
-            auth.signOut()
+           auth.signOut()
 //            when(sigoutviewModel.(uid = Firebase.auth.currentUser?.uid!!)){
 //                "Supermarket" -> {
 //                    val navCon = findNavController()

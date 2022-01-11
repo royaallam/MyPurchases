@@ -83,6 +83,7 @@ class UserProdutorFragment : Fragment() {
             override fun onBindViewHolder(holder: UserprodutorHolder, position: Int) {
                 val prodctoorUR = prodctorList[position]
                 holder.decripation.text = prodctoorUR.decpation
+                holder.iamgePro.load(prodctoorUR.imageURL)
                 holder.bind(prodctoorUR)
             }
 

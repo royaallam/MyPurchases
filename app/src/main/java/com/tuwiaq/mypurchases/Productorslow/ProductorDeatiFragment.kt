@@ -107,7 +107,7 @@ class ProductorDeatiFragment : Fragment() {
             Toast.makeText(requireContext(),"addcart", Toast.LENGTH_LONG).show()
 //           proviewmodel.cart(prodId,args.id)
             val navCon = findNavController()
-            val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToCartListProdutorFragment()
+            val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToSigoutFragment()
             navCon.navigate(action)
         }
 
