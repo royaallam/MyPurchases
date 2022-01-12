@@ -10,14 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.navigation.fragment.findNavController
-import com.google.api.LogDescriptor
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.userProfileChangeRequest
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 
-import com.tuwiaq.mypurchases.LoginFragment.LoginFragment
-import com.tuwiaq.mypurchases.LoginFragment.LoginFragmentDirections
 import com.tuwiaq.mypurchases.R
 
 
@@ -90,7 +85,7 @@ class RegisterFragment : Fragment() {
             val emaiEText: String = emailET.text.toString()
             val passWord: String = passwordET.text.toString()
             val passwordRE: String = repasswordET.text.toString()
-            val cart=""
+            val cart= listOf<String>()
             val user = User(userName,emaiEText,type,cart)
 
             when {

@@ -1,9 +1,6 @@
 package com.tuwiaq.mypurchases.LoginFragment
 
-import android.app.Activity
 import android.app.AlertDialog
-import android.content.Intent
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
@@ -15,14 +12,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager.getDefaultSharedPreferences
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import com.tuwiaq.mypurchases.MainActivity
 import com.tuwiaq.mypurchases.R
-import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragmentDirections
 import com.tuwiaq.mypurchases.RegisterFragment.User
 import kotlinx.coroutines.launch
 import java.util.*

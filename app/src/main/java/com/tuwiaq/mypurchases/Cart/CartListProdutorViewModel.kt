@@ -9,9 +9,12 @@ class CartListProdutorViewModel : ViewModel() {
 //    fun cartProductor( cart:Cart){
 //        repsitorymypurch.cartProductor(cart)
 //    }
-    fun cart(docId:String,id:String){
-
-        repsitorymypurch.cart(docId,id)
-    }
+//    fun cart(docId:String,id:String){
+//
+//        repsitorymypurch.cart(docId,id)
+//    }
+fun cart(id:String){
+    repsitorymypurch.cart(id)
+}
 
 }

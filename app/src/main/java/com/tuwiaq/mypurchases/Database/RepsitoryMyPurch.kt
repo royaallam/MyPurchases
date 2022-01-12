@@ -11,8 +11,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.*
+import com.google.firebase.firestore.model.Values
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firestore.v1.ArrayValue
+import com.google.firestore.v1.Value
 import com.tuwiaq.mypurchases.Cart.Cart
 import com.tuwiaq.mypurchases.RegisterFragment.User
 import com.tuwiaq.mypurchases.Supermarket.SuperMarkt
@@ -173,19 +176,29 @@ class RepsitoryMyPurch private constructor(context: Context) {
 
 
 //----------cart---------///////
-    fun cartProductor( cart:Cart){
-
-        val ref =firestore.collection("Cart").document()
-        cart.id = ref.id
-        ref.set(cart)
-
+//    fun cartProductor( cart:Cart){
+//
+//        val ref =firestore.collection("Cart").document()
+//        cart.id = ref.id
+//        ref.set(cart)
+//
+//    }
+//    fun cart(docId:String,id:String){
+//        val a = hashMapOf<String, String>(
+//            "prodId" to id
+//        )
+//        firestore.collection("users").document(docId).update("cart",FieldValue.arrayUnion(id))
+//    }
+    fun cart(id:String):String{
+    val a = firestore.collection("product").document()
+        firestore.collection("users").document(auth.currentUser!!.uid)
+            .update("cart",FieldValue.arrayUnion(a.id))
+            .addOnSuccessListener {
+                Log.d(TAG, "{$id}")
+            }
+    return id
     }
-    fun cart(docId:String,id:String){
-        val a = hashMapOf<String, String>(
-            "prodId" to id
-        )
-        firestore.collection("users").document(docId).update("cart",FieldValue.arrayUnion(id))
-    }
+
 
     //---------Rec Supermarket-----------//
 

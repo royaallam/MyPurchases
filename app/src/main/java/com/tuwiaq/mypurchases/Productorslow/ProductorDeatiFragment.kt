@@ -19,6 +19,8 @@ import com.tuwiaq.mypurchases.Cart.Cart
 import com.tuwiaq.mypurchases.Cart.CartListProdutorViewModel
 import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragmentDirections
+import com.tuwiaq.mypurchases.RegisterFragment.User
+import com.tuwiaq.mypurchases.UserProductor.Prodctor
 
 
 private const val TAG = "ProductorDeatiFragment"
@@ -36,9 +38,10 @@ class ProductorDeatiFragment : Fragment() {
     private lateinit var auto: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private lateinit var preBut: Button
+    private lateinit var prodctor: Prodctor
+    private lateinit var user: User
 
-
-    private val proviewmodel:ProductorDeatiFragmentViewmodle by lazy { ViewModelProvider(this).get(ProductorDeatiFragmentViewmodle::class.java) }
+    private val proDecViewmodel:ProductorDeatiFragmentViewmodle by lazy { ViewModelProvider(this).get(ProductorDeatiFragmentViewmodle::class.java) }
 
      var count=0
      private var productId = ""
@@ -56,6 +59,8 @@ class ProductorDeatiFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
          firestore= FirebaseFirestore.getInstance()
+        prodctor= Prodctor()
+        user= User()
         productId = args.id
 
     }
@@ -112,7 +117,9 @@ class ProductorDeatiFragment : Fragment() {
         }
         addCart.setOnClickListener {
             Toast.makeText(requireContext(),"addcart", Toast.LENGTH_LONG).show()
-//           proviewmodel.cart(prodId,args.id)
+//            prodctor.id= user.cart.toString()
+            proDecViewmodel.cart(id.toString())
+
             val navCon = findNavController()
             val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToCartListProdutorFragment()
             navCon.navigate(action)
