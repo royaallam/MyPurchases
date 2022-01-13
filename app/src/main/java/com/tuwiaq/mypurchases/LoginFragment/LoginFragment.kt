@@ -14,6 +14,9 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.WorkRequest
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -118,5 +121,11 @@ class LoginFragment : Fragment() {
         }
 
     }
+//  private  fun simpleWork(){
+//        val mRequest:WorkRequest= OneTimeWorkRequestBuilder<MyWorker>()
+//            .build()
+//               WorkManager.getInstance(requireContext())
+//                   .enqueue(mRequest)
+//    }
 }
 

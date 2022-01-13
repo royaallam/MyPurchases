@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tuwiaq.mypurchases.Cart.Cart
 import com.tuwiaq.mypurchases.Cart.CartListProdutorViewModel
@@ -46,6 +47,7 @@ class ProductorDeatiFragment : Fragment() {
      var count=0
      private var productId = ""
     var prodId = ""
+    val auth: FirebaseAuth = FirebaseAuth.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -118,9 +120,16 @@ class ProductorDeatiFragment : Fragment() {
         addCart.setOnClickListener {
             Toast.makeText(requireContext(),"addcart", Toast.LENGTH_LONG).show()
 //            prodctor.id= user.cart.toString()
-            proDecViewmodel.cart(id.toString())
+    firestore.collection("product").document()
+    firestore.collection("users").document(auth.currentUser!!.uid)
+        .update("cart", FieldValue.arrayUnion(id))
+        .addOnSuccessListener {
 
-            val navCon = findNavController()
+        }
+
+
+
+    val navCon = findNavController()
             val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToCartListProdutorFragment()
             navCon.navigate(action)
         }

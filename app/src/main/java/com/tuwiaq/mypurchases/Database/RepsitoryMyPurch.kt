@@ -3,7 +3,7 @@ package com.tuwiaq.mypurchases.Database
 import android.content.Context
 import android.net.Uri
 import android.util.Log
-import android.widget.Toast
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.google.firebase.auth.AuthResult
@@ -189,18 +189,19 @@ class RepsitoryMyPurch private constructor(context: Context) {
 //        )
 //        firestore.collection("users").document(docId).update("cart",FieldValue.arrayUnion(id))
 //    }
-    fun cart(id:String):String{
-    val a = firestore.collection("product").document()
-        firestore.collection("users").document(auth.currentUser!!.uid)
-            .update("cart",FieldValue.arrayUnion(a.id))
-            .addOnSuccessListener {
-                Log.d(TAG, "{$id}")
-            }
-    return id
-    }
+
+//    fun cart(id:String):String {
+//        firestore.collection("product").document()
+//        firestore.collection("users").document(auth.currentUser!!.uid)
+//            .update("cart", FieldValue.arrayUnion(id))
+//            .addOnSuccessListener {
+//                Log.d(TAG, "dddd{$id}")
+//            }
+//        return id
+//    }
 
 
-    //---------Rec Supermarket-----------//
+        //---------Rec Supermarket-----------//
 
 
     suspend fun EnentChangeListener():LiveData<List<SuperMarkt>>{
