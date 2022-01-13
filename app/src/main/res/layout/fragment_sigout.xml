@@ -7,16 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".LoginFragment.SigoutFragment">
 
-    <TextView
-        android:id="@+id/logout_tV"
-        android:layout_width="114dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="272dp"
-        android:text="@string/log_out"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/chose_lan"
         android:layout_width="wrap_content"
@@ -47,4 +37,12 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/logout_btm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/log_out"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="262dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

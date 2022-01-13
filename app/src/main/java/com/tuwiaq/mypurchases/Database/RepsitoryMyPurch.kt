@@ -161,7 +161,9 @@ class RepsitoryMyPurch private constructor(context: Context) {
         return liveData {
             val userInfo=  firestore.collection("users")
                 .document(Firebase.auth.currentUser?.uid!!)
-              .get().await().toObject(User::class.java)
+              .get()
+                .await()
+                .toObject(User::class.java)
           //  Log.d(TAG, "Profile: $userInfo")
 
             if (userInfo!=null){
@@ -190,15 +192,16 @@ class RepsitoryMyPurch private constructor(context: Context) {
 //        firestore.collection("users").document(docId).update("cart",FieldValue.arrayUnion(id))
 //    }
 
-//    fun cart(id:String):String {
-//        firestore.collection("product").document()
-//        firestore.collection("users").document(auth.currentUser!!.uid)
-//            .update("cart", FieldValue.arrayUnion(id))
-//            .addOnSuccessListener {
-//                Log.d(TAG, "dddd{$id}")
-//            }
-//        return id
-//    }
+    fun cart(id:String):String {
+    val a= firestore.collection("product").document().id
+        firestore.collection("users").document(auth.currentUser!!.uid)
+            .update("cart", FieldValue.arrayUnion(a))
+            .addOnSuccessListener {
+                Log.d(TAG, "dddd{$id}")
+                setOf(id)
+            }
+        return id
+    }
 
 
         //---------Rec Supermarket-----------//

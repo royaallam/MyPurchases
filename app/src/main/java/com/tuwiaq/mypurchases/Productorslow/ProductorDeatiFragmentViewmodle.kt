@@ -16,7 +16,7 @@ class ProductorDeatiFragmentViewmodle :ViewModel(){
 //
 //        repsitorymypurch.cart(docId,id)
 //    }
-//fun cart(id:String){
-//     repsitorymypurch.cart(id)
-//}
+fun cart(id:String){
+     repsitorymypurch.cart(id)
+}
 }

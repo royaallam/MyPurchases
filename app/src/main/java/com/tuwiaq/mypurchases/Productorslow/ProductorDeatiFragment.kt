@@ -120,20 +120,22 @@ class ProductorDeatiFragment : Fragment() {
         addCart.setOnClickListener {
             Toast.makeText(requireContext(),"addcart", Toast.LENGTH_LONG).show()
 //            prodctor.id= user.cart.toString()
-    firestore.collection("product").document()
+//    firestore.collection("product").document()
     firestore.collection("users").document(auth.currentUser!!.uid)
-        .update("cart", FieldValue.arrayUnion(id))
-        .addOnSuccessListener {
-
-        }
-
-
-
-    val navCon = findNavController()
+        .update("cart", FieldValue.arrayUnion(productId))
+            val navCon = findNavController()
             val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToCartListProdutorFragment()
             navCon.navigate(action)
         }
 
-    }
 
-}
+    // proDecViewmodel.cart(id.toString())
+
+
+//    val navCon = findNavController()
+//            val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToCartListProdutorFragment()
+//            navCon.navigate(action)
+        }
+
+
+    }

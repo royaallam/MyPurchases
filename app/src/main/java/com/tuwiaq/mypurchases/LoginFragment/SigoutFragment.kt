@@ -60,7 +60,7 @@ class SigoutFragment : Fragment() {
         return view
     }
     fun Init(view: View){
-        singout=view.findViewById(R.id.logout_tV)
+        singout=view.findViewById(R.id.logout_btm)
         usertV=view.findViewById(R.id.user_name)
         emailtv=view.findViewById(R.id.email_tv)
         choseLang=view.findViewById(R.id.chose_lan)
@@ -83,7 +83,10 @@ class SigoutFragment : Fragment() {
         }
 
         singout.setOnClickListener {
-           auth.signOut()
+//           auth.signOut()
+//            val navCon = findNavController()
+//                    val action = R.id.action_cartListProdutorFragment_to_sigoutFragment
+//                    navCon.navigate(action)
 //            when(sigoutviewModel.(uid = Firebase.auth.currentUser?.uid!!)){
 //                "Supermarket" -> {
 //                    val navCon = findNavController()
