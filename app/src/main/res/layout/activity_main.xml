@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_200"
-            android:src="@drawable/image_cart"
+            android:src="@drawable/image_scanner"
             app:layout_anchor="@id/bottomAppBar"
             app:maxImageSize="50sp"
             tools:ignore="MissingConstraints"

@@ -7,4 +7,4 @@ data class Prodctor(
     val decpation:String="",
     val price: String ="",
     var imageURL: String="",
-    var id: String = "")
+    var id: String="")

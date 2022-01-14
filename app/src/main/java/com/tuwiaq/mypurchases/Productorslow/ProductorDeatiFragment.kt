@@ -2,6 +2,7 @@ package com.tuwiaq.mypurchases.Productorslow
 
 
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,17 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import com.tuwiaq.mypurchases.Cart.Cart
-import com.tuwiaq.mypurchases.Cart.CartListProdutorViewModel
 import com.tuwiaq.mypurchases.R
-import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragmentDirections
 import com.tuwiaq.mypurchases.RegisterFragment.User
 import com.tuwiaq.mypurchases.UserProductor.Prodctor
 
@@ -41,6 +39,7 @@ class ProductorDeatiFragment : Fragment() {
     private lateinit var preBut: Button
     private lateinit var prodctor: Prodctor
     private lateinit var user: User
+    var filepath: Uri? = null
 
     private val proDecViewmodel:ProductorDeatiFragmentViewmodle by lazy { ViewModelProvider(this).get(ProductorDeatiFragmentViewmodle::class.java) }
 
@@ -99,6 +98,10 @@ class ProductorDeatiFragment : Fragment() {
             .get().addOnSuccessListener {
                 barCodePro.text = it.getString("codebar")
                 decrpationPrp.text=it.getString("decpation")
+//                imagePro.load(filepath)
+
+
+
             }
         numPro.text= count.toString()
         addPro.setOnClickListener {

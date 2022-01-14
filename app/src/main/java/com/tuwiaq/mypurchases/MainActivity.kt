@@ -3,6 +3,7 @@ package com.tuwiaq.mypurchases
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -12,10 +13,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tuwiaq.mypurchases.Cart.CartListProdutorFragment
+import com.tuwiaq.mypurchases.LoginFragment.LoginFragmentDirections
 import com.tuwiaq.mypurchases.LoginFragment.SigoutFragment
 
 import kotlinx.coroutines.Dispatchers
@@ -28,6 +32,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var navController: NavController
+    private lateinit var bottomappbar: BottomAppBar
+    private lateinit var floatingactionbutton: FloatingActionButton
 
 
 
@@ -38,9 +45,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        navController=findNavController(R.id.fragment_container)
         auth = FirebaseAuth.getInstance()
         bottomNavigationView=findViewById(R.id.bottomNavigationView)
+        bottomappbar=findViewById(R.id.bottomAppBar)
+        floatingactionbutton=findViewById(R.id.floatingActionButton)
+
+
+
+//        floatingactionbutton.setOnClickListener {
+//            val navCon = findNavController()
+//            val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment3()
+//            navCon.navigate(action)
+//        }
 
         val navController = Navigation.findNavController(this, R.id.fragment_container)
         if(!auth.currentUser?.uid.isNullOrBlank()){
@@ -58,10 +75,61 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        navController()
 
 
+    }
+    private  fun navController(){
+      navController.addOnDestinationChangedListener{_,destnation,_  ->
+          when(destnation.id){
+              R.id.loginFragment ->{
+                  bottomNavigationView.visibility=View.GONE
+                  floatingactionbutton.visibility=View.GONE
+                  bottomappbar.visibility=View.GONE
 
-
+              }
+              R.id.registerFragment ->{
+                  bottomNavigationView.visibility=View.GONE
+                  floatingactionbutton.visibility=View.GONE
+                  bottomappbar.visibility=View.GONE
+              }
+              R.id.barCodeScannerFragment ->{
+                  bottomNavigationView.visibility=View.VISIBLE
+                  floatingactionbutton.visibility=View.VISIBLE
+                  bottomappbar.visibility=View.VISIBLE
+              }
+              R.id.listAddSuperFragment ->{
+                  bottomNavigationView.visibility=View.VISIBLE
+                  floatingactionbutton.visibility=View.VISIBLE
+                  bottomappbar.visibility=View.VISIBLE
+              }
+              R.id.mapSMFragment ->{
+                  bottomNavigationView.visibility=View.VISIBLE
+                  floatingactionbutton.visibility=View.VISIBLE
+                  bottomappbar.visibility=View.VISIBLE
+              }
+              R.id.superMarketViewFragment ->{
+                  bottomNavigationView.visibility=View.VISIBLE
+                  floatingactionbutton.visibility=View.VISIBLE
+                  bottomappbar.visibility=View.VISIBLE
+              }
+              R.id.userProdutorFragment2 ->{
+                  bottomNavigationView.visibility=View.VISIBLE
+                  floatingactionbutton.visibility=View.VISIBLE
+                  bottomappbar.visibility=View.VISIBLE
+              }
+              R.id.productorDeatiFragment ->{
+                  bottomNavigationView.visibility=View.VISIBLE
+                  floatingactionbutton.visibility=View.VISIBLE
+                  bottomappbar.visibility=View.VISIBLE
+              }
+              R.id.cartListProdutorFragment ->{
+                  bottomNavigationView.visibility=View.VISIBLE
+                  floatingactionbutton.visibility=View.VISIBLE
+                  bottomappbar.visibility=View.VISIBLE
+              }
+          }
+      }
     }
 }
 

@@ -53,10 +53,6 @@ class barCodeScannerFragment : Fragment() {
         val action=barCodeScannerFragmentDirections.actionBarCodeScannerFragmentToListAddSuperFragment(result.contents)
         navController.navigate(action)
 
-
-
-
-
     }
 
 }

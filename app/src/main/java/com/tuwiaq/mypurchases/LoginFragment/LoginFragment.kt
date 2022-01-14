@@ -12,24 +12,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import androidx.work.WorkRequest
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.tuwiaq.mypurchases.Location.MapSuperMarketFragment
 import com.tuwiaq.mypurchases.R
-import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragment
-import com.tuwiaq.mypurchases.RegisterFragment.RegisterFragmentDirections
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
-import kotlin.reflect.typeOf
+
 
 
 private const val TAG = "LoginFragment"
@@ -40,7 +28,7 @@ class LoginFragment : Fragment() {
     private lateinit var passwordET: EditText
     private lateinit var signinBTN: Button
     private lateinit var resisterBTN: Button
-    private  val viewModel: LoginViewModel by lazy { ViewModelProvider(this).get(LoginViewModel::class.java) }
+    private val viewModel: LoginViewModel by lazy { ViewModelProvider(this).get(LoginViewModel::class.java) }
     var type = ""
 
 
@@ -76,56 +64,64 @@ class LoginFragment : Fragment() {
                 showToast("Enter email and password")
             } else {
                 lifecycleScope.launch {
-                    if (viewModel.loginUser(emaiETexts, passWords)){
+                    if (viewModel.loginUser(emaiETexts, passWords)) {
+                        showToast("logis is successfully")
                         Log.d(TAG, "onActivityCreated: scuuell")
-                        when(viewModel.typelogin(uid = Firebase.auth.currentUser?.uid!!)){
+
+                        when (viewModel.typelogin(uid = Firebase.auth.currentUser?.uid!!)) {
                             "Supermarket" -> {
                                 val navCon = findNavController()
-                                val action = LoginFragmentDirections.actionLoginFragmentToBarCodeScannerFragment()
+                                val action =
+                                    LoginFragmentDirections.actionLoginFragmentToBarCodeScannerFragment()
                                 navCon.navigate(action)
                                 Log.d(TAG, "onActivityCreated: scuuell3")
 
                             }
                             "user" -> {
                                 val navCon = findNavController()
-                                val action = LoginFragmentDirections.actionLoginFragmentToMapSuperMarketFragment2()
+                                val action =
+                                    LoginFragmentDirections.actionLoginFragmentToMapSuperMarketFragment2()
                                 navCon.navigate(action)
                                 Log.d(TAG, "onActivityCreated: scuuell2")
                             }
-                            else -> {
-                                Log.d(
-                                    TAG,
-                                    "onActivityCreated: ${viewModel.typelogin(uid = Firebase.auth.currentUser?.uid!!)} ")}
+//                            else -> {
+//                                showToast("dskkd")
+//                                Log.d(
+//                                    TAG,
+//                                    "onActivityCreated: ${viewModel.typelogin(uid = Firebase.auth.currentUser?.uid!!)} ")}
+//
+//                        }
 
                         }
 
+
+                    } else {
+                        showToast("email or password is wrong")
                     }
 
 
-
                 }
+            }
 
+
+        }
+
+            resisterBTN.setOnClickListener {
+
+                val navCon = findNavController()
+                val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment3()
+                navCon.navigate(action)
 
             }
-        }
 
 
-
-
-        resisterBTN.setOnClickListener {
-
-            val navCon = findNavController()
-            val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment3()
-            navCon.navigate(action)
-
-        }
-
-    }
 //  private  fun simpleWork(){
 //        val mRequest:WorkRequest= OneTimeWorkRequestBuilder<MyWorker>()
 //            .build()
 //               WorkManager.getInstance(requireContext())
 //                   .enqueue(mRequest)
 //    }
+
+    }
 }
 

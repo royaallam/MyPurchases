@@ -3,7 +3,8 @@ package com.tuwiaq.mypurchases.Database
 import android.content.Context
 import android.net.Uri
 import android.util.Log
-
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.google.firebase.auth.AuthResult
@@ -11,11 +12,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.*
-import com.google.firebase.firestore.model.Values
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firestore.v1.ArrayValue
-import com.google.firestore.v1.Value
 import com.tuwiaq.mypurchases.Cart.Cart
 import com.tuwiaq.mypurchases.RegisterFragment.User
 import com.tuwiaq.mypurchases.Supermarket.SuperMarkt
@@ -29,13 +27,12 @@ import java.util.*
 private const val TAG = "RepsitoryMyPurch"
 
 class RepsitoryMyPurch private constructor(context: Context) {
+    //-----firebases---------//
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
     val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-    //var filepath: Uri? =null
     private val iamgestorage = FirebaseStorage.getInstance()
-
     var storageRef = iamgestorage.reference
-
+//------comp---///
     companion object {
 
         var INSTANCE: RepsitoryMyPurch? = null
@@ -47,14 +44,18 @@ class RepsitoryMyPurch private constructor(context: Context) {
             }
         }
 
-
         fun get(): RepsitoryMyPurch {
             return INSTANCE
                 ?: throw IllegalStateException("My purchases Repositor must be initialized")
         }
     }
+//    private fun showToast(msg: String) {
+//        Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
+//
+//    }
 
     //////////////////------log in -----//////////////////////
+
     suspend fun loginUser(emaiETexts: String, passWords: String) : Boolean {
         var x: AuthResult?  = null
         try {
@@ -62,15 +63,10 @@ class RepsitoryMyPurch private constructor(context: Context) {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.e(TAG, "loginUser: good job ")
-
-
                     } else {
                         Log.e(TAG, "email or password is wrong")
-
-
                     }
                 }.await()
-
         }catch (e:Exception){
             Log.e(TAG, "loginUser: error ",e )
         }
@@ -173,11 +169,26 @@ class RepsitoryMyPurch private constructor(context: Context) {
         }
     }
 
-
-
-
-
 //----------cart---------///////
+//    fun cartPro():LiveData<List<Cart>>{
+//        return LiveData{
+//            val listdata=firestore.collection("users").whereEqualTo("caet",)
+//            .get()
+//                .await().toObjects(Cart::class.java)
+//            emptyList(listdata)
+//
+//
+//        }
+//    }
+    fun cartPro(cart:Cart):LiveData<List<User>>{
+        return liveData {
+            val listdata = firestore.collection("users").whereEqualTo("cret",cart)
+            .get()
+                .await()
+                .toObjects(User::class.java)
+            emit(listdata)
+        }
+    }
 //    fun cartProductor( cart:Cart){
 //
 //        val ref =firestore.collection("Cart").document()

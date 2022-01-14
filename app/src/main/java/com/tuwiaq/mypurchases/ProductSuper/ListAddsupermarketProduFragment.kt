@@ -1,35 +1,22 @@
 package com.tuwiaq.mypurchases.Product
 
-import android.app.Activity
-import android.app.ProgressDialog
 import android.content.Intent
-import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
 import com.tuwiaq.mypurchases.ProductSuper.ListAddsupermarketProduViewModel
 import com.tuwiaq.mypurchases.R
-import com.tuwiaq.mypurchases.Supermarket.SuperMarketViewViewModel
 import com.tuwiaq.mypurchases.UserProductor.Prodctor
-import kotlinx.coroutines.tasks.await
-import java.util.*
 
 private const val REQEST_CODE_IMAGE_PICK=0
 
@@ -50,12 +37,6 @@ class ListAddSuperFragment : Fragment() {
     var filepath: Uri? = null
     private val args: ListAddSuperFragmentArgs by navArgs()
 
-//    private val openGallery = registerForActivityResult(
-//        ActivityResultContracts.GetContent()
-//    ) {
-//
-//
-//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

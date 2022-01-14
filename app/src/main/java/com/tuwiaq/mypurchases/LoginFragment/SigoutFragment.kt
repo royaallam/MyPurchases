@@ -1,6 +1,7 @@
 package com.tuwiaq.mypurchases.LoginFragment
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
@@ -83,8 +84,14 @@ class SigoutFragment : Fragment() {
         }
 
         singout.setOnClickListener {
-//           auth.signOut()
-//            val navCon = findNavController()
+//          auth.signOut()
+//            startActivity(
+//                Intent(
+//                context,LoginFragment::class.java
+//            )
+//            )
+//            finish()
+////            val navCon = findNavController()
 //                    val action = R.id.action_cartListProdutorFragment_to_sigoutFragment
 //                    navCon.navigate(action)
 //            when(sigoutviewModel.(uid = Firebase.auth.currentUser?.uid!!)){

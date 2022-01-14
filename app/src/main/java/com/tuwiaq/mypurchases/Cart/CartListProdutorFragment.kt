@@ -9,8 +9,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +21,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.tuwiaq.mypurchases.Product.ListAddSuperFragmentArgs
 import com.tuwiaq.mypurchases.R
+import com.tuwiaq.mypurchases.Supermarket.SuperMarketViewFragmentDirections
+import com.tuwiaq.mypurchases.Supermarket.SuperMarkt
 import kotlinx.coroutines.launch
 
 
@@ -26,10 +30,8 @@ class CartListProdutorFragment : Fragment() {
     private lateinit var cart_list_reclyec:RecyclerView
     private  val cartViewModel: CartListProdutorViewModel by lazy { ViewModelProvider(this).get(CartListProdutorViewModel::class.java) }
     private lateinit var firestore: FirebaseFirestore
-    private lateinit var cart:Cart
+    private lateinit var cartid:Cart
     private lateinit var auto: FirebaseAuth
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,12 +46,16 @@ class CartListProdutorFragment : Fragment() {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        lifecycleScope.launch {
-
-        }
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        lifecycleScope.launch {
+//            cartViewModel.cartPro(c).observe(viewLifecycleOwner,
+//
+//                Observer {
+//                    updateUI(it)
+//                })
+//        }
+//    }
     fun Init(view: View) {
         cart_list_reclyec = view.findViewById(R.id.cart_user_recycler)
 //        cartViewModel.cart(id.toString())
@@ -60,27 +66,40 @@ class CartListProdutorFragment : Fragment() {
         super.onCreate(savedInstanceState)
         firestore= FirebaseFirestore.getInstance()
       //  productId = args.id.toString()
+        cartid=Cart()
     }
 
     override fun onStart() {
         super.onStart()
     }
+    private fun updateUI(cartRms: List<Cart>) {
+        val CartAdapter = CartAdapter(cartRms as ArrayList<Cart>)
+        cart_list_reclyec.adapter=CartAdapter
+    }
     inner class CartHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-        var iamgeProdutor: ImageView?= null
-        var decrProdutor: TextView?=null
-        var  addProductor:ImageView?=null
-        var   subProductor:ImageView?=null
-        var prince:TextView?=null
-        var quantity:TextView?=null
+//        var iamgeProdutor: ImageView?= null
+//        var decrProdutor: TextView?=null
+//        var  addProductor:ImageView?=null
+//        var   subProductor:ImageView?=null
+//        var prince:TextView?=null
+//        var quantity:TextView?=null
+val   quantity:TextView=itemView.findViewById(R.id.prince_imag)
+        private lateinit var titlca: Cart
+        fun bind(cart: Cart) {
+            titlca = cart
+
+            // superMarketTextView.text
+
+        }
 
 
-      init {
-          iamgeProdutor=itemView.findViewById(R.id.image_prod) as ImageView
-        decrProdutor= itemView.findViewById(R.id.name_productoe)as TextView
-        addProductor=itemView.findViewById(R.id.add_imag) as ImageView
-          subProductor=itemView.findViewById(R.id.sub_imag)as ImageView
-          prince=itemView.findViewById(R.id.prince_imag) as TextView
-          quantity=itemView.findViewById(R.id.qutit_image) as TextView
+        init {
+//          iamgeProdutor=itemView.findViewById(R.id.image_prod) as ImageView
+//        decrProdutor= itemView.findViewById(R.id.name_productoe)as TextView
+//        addProductor=itemView.findViewById(R.id.add_imag) as ImageView
+//          subProductor=itemView.findViewById(R.id.sub_imag)as ImageView
+//          prince:=itemView.findViewById(R.id.prince_imag) as TextView
+//         val   quantity:TextView=itemView.findViewById(R.id.prince_imag)
       }
 
     }
@@ -95,9 +114,11 @@ class CartListProdutorFragment : Fragment() {
 
         override fun onBindViewHolder(holder: CartHolder, position: Int) {
             val cartU = cartList[position]
-            holder.decrProdutor!!.text=StringBuilder().append(cartU)
-            holder.quantity!!.text=StringBuilder("R").append(cartU)
-            holder.prince!!.text=StringBuilder("").append(cartU)
+            holder.quantity.text=cartU.cart
+            holder.bind(cartU)
+//            holder.decrProdutor!!.text=StringBuilder().append(cartU)
+//            holder.quantity!!.text=StringBuilder("R").append(cartU)
+//            holder.prince!!.text=StringBuilder("").append(cartU)
 
 //            holder.subProductor!!.setOnClickListener { _ ->subCartItem(holder,cartU)}
 //            holder.addProductor!!.setOnClickListener { _ ->addCartItem(holder,cartU
