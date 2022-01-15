@@ -180,14 +180,38 @@ class RepsitoryMyPurch private constructor(context: Context) {
 //
 //        }
 //    }
-    fun cartPro(cart:Cart):LiveData<List<User>>{
+    fun cartPro(userId:String):LiveData<List<Cart>>{
         return liveData {
-            val listdata = firestore.collection("users").whereEqualTo("cret",cart)
+            val listdata = firestore.collection("users").whereEqualTo("id",userId)
             .get()
                 .await()
                 .toObjects(User::class.java)
-            emit(listdata)
+            val user = listdata.first()
+            val cart = user.cart
+            emit(cart)
         }
+    }
+
+    fun productDetails(userId:String):LiveData<List<Cart>>{
+       return liveData {
+           val listdata = firestore.collection("users").whereEqualTo("id",userId)
+               .get()
+               .await()
+               .toObjects(User::class.java)
+           val user = listdata.first()
+           val cart = user.cart
+           val productList = mutableListOf<Cart>()
+//           cart.forEach {
+//               val product = firestore.collection("product").document(it.product.id).get().await()
+//                   .toObject(Cart::class.java)
+//               product.let { product ->
+//                   productList.add(product!!)
+//               }
+//
+//           }
+           Log.d(TAG, "productDetails: ${user.cart}")
+           emit(user.cart)
+       }
     }
 //    fun cartProductor( cart:Cart){
 //

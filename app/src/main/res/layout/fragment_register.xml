@@ -9,15 +9,16 @@
 
     <EditText
         android:id="@+id/username_edittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="278dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.288"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="165dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -25,32 +26,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="84dp"
-        android:text="@string/resister"
+        android:text="@string/registration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.909" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="98dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="52dp"
-        android:text="@string/resister"
-        app:layout_constraintBottom_toTopOf="@+id/username_edittext"
+        android:layout_width="182dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/registration"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edittext_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="275dp"
+        android:layout_height="43dp"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="@string/email"
+        android:textColorLink="@color/black"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.288"
@@ -59,8 +64,8 @@
 
     <EditText
         android:id="@+id/passeord_edtxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="281dp"
+        android:layout_height="44dp"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="@string/password"
@@ -72,14 +77,14 @@
 
     <EditText
         android:id="@+id/re_password_edtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_width="275dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/re_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintHorizontal_bias="0.301"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passeord_edtxt" />
 
@@ -87,9 +92,10 @@
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/resis_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.339"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/re_password_edtext"
         tools:ignore="MissingConstraints">

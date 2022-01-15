@@ -11,15 +11,19 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.tuwiaq.mypurchases.Cart.Cart
 import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.RegisterFragment.User
 import com.tuwiaq.mypurchases.UserProductor.Prodctor
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 
 private const val TAG = "ProductorDeatiFragment"
@@ -37,7 +41,7 @@ class ProductorDeatiFragment : Fragment() {
     private lateinit var auto: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private lateinit var preBut: Button
-    private lateinit var prodctor: Prodctor
+    private var prodctor: Prodctor? = null
     private lateinit var user: User
     var filepath: Uri? = null
 
@@ -96,9 +100,15 @@ class ProductorDeatiFragment : Fragment() {
 
         firestore.collection("product").document(productId)
             .get().addOnSuccessListener {
+                prodctor = it.toObject(Prodctor::class.java)
                 barCodePro.text = it.getString("codebar")
                 decrpationPrp.text=it.getString("decpation")
-//                imagePro.load(filepath)
+                val url = it.getString("imageURL")
+                imagePro.load(url)
+
+
+
+
 
 
 
@@ -121,15 +131,41 @@ class ProductorDeatiFragment : Fragment() {
             navCon.navigate(action)
         }
         addCart.setOnClickListener {
+            if(count != 0){
             Toast.makeText(requireContext(),"addcart", Toast.LENGTH_LONG).show()
 //            prodctor.id= user.cart.toString()
 //    firestore.collection("product").document()
-    firestore.collection("users").document(auth.currentUser!!.uid)
-        .update("cart", FieldValue.arrayUnion(productId))
-            val navCon = findNavController()
-            val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToCartListProdutorFragment()
-            navCon.navigate(action)
-        }
+            val cart = Cart(product = prodctor!!, count = count)
+            lifecycleScope.launch {
+                val user =
+                    firestore.collection("users").document(auth.currentUser!!.uid).get().await()
+                        .toObject(User::class.java)
+                var contain = false
+
+                user?.cart?.forEach {
+                    if (it.product.id == cart.product.id) {
+                        cart.count += it.count
+                        contain = true
+                    }
+                }
+                if (contain) {
+                    val newCart = user?.cart?.filter {
+                        it.product.id != cart.product.id
+                    }?.toMutableList()
+                    newCart?.add(cart)
+                    firestore.collection("users").document(auth.currentUser!!.uid)
+                        .update("cart", newCart)
+                } else {
+                    firestore.collection("users").document(auth.currentUser!!.uid)
+                        .update("cart", FieldValue.arrayUnion(cart))
+                }
+            }
+                val navCon = findNavController()
+                val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToCartListProdutorFragment()
+                navCon.navigate(action)
+            }
+            }
+
 
 
     // proDecViewmodel.cart(id.toString())

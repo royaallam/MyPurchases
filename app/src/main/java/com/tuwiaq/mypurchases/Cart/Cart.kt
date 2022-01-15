@@ -8,7 +8,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.tuwiaq.mypurchases.Productorslow.ProductorDeatiFragmentArgs
 import com.tuwiaq.mypurchases.UserProductor.Prodctor
 data class Cart(
-    val cart:String=""
+    var product: Prodctor = Prodctor(),
+    var count: Int = 0
 )
 //    var id:String?=null,
 //    var descipation:String?=null,

@@ -11,6 +11,10 @@ import kotlinx.coroutines.tasks.await
 class CartListProdutorViewModel : ViewModel() {
     private val repsitorymypurch= RepsitoryMyPurch.get()
 
+    fun productDetails(userId:String):LiveData<List<Cart>>{
+        return repsitorymypurch.productDetails(userId)
+    }
+
 //    fun cartProductor( cart:Cart){
 //        repsitorymypurch.cartProductor(cart)
 //    }

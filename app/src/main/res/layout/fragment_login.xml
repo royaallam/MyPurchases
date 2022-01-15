@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".authencation.LoginFragment.LoginFragment">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/sign_intext"
@@ -24,6 +23,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/email"
+        android:textColorLink="#000051"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
         android:id="@+id/resister_btn"
         android:layout_width="346dp"
         android:layout_height="83dp"
-        android:text="@string/resister"
+        android:text="@string/registration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"

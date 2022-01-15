@@ -12,6 +12,7 @@ import android.widget.*
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.tuwiaq.mypurchases.Cart.Cart
 
 import com.tuwiaq.mypurchases.R
 
@@ -85,7 +86,7 @@ class RegisterFragment : Fragment() {
             val emaiEText: String = emailET.text.toString()
             val passWord: String = passwordET.text.toString()
             val passwordRE: String = repasswordET.text.toString()
-            val cart= listOf<String>()
+            val cart= listOf<Cart>()
             val user = User(userName,emaiEText,type,cart)
 
             when {
@@ -96,6 +97,7 @@ class RegisterFragment : Fragment() {
 
                 else -> {
                     viewModel.registerUser(userName,emaiEText,passWord,user)
+                    showToast("Register is successfully")
                     val navCon = findNavController()
                     val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment3()
                     navCon.navigate(action)

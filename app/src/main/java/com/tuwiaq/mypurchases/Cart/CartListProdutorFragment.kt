@@ -2,37 +2,38 @@ package com.tuwiaq.mypurchases.Cart
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import com.tuwiaq.mypurchases.Product.ListAddSuperFragmentArgs
 import com.tuwiaq.mypurchases.R
-import com.tuwiaq.mypurchases.Supermarket.SuperMarketViewFragmentDirections
-import com.tuwiaq.mypurchases.Supermarket.SuperMarkt
+import com.tuwiaq.mypurchases.RegisterFragment.User
+import com.tuwiaq.mypurchases.UserProductor.Prodctor
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
-
+private const val TAG = "CartListProdutorFragmen"
 class CartListProdutorFragment : Fragment() {
     private lateinit var cart_list_reclyec:RecyclerView
     private  val cartViewModel: CartListProdutorViewModel by lazy { ViewModelProvider(this).get(CartListProdutorViewModel::class.java) }
     private lateinit var firestore: FirebaseFirestore
-    private lateinit var cartid:Cart
+//    private lateinit var cartid:Cart
     private lateinit var auto: FirebaseAuth
-
+    val auth: FirebaseAuth = FirebaseAuth.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,19 +47,23 @@ class CartListProdutorFragment : Fragment() {
         return view
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        lifecycleScope.launch {
-//            cartViewModel.cartPro(c).observe(viewLifecycleOwner,
-//
-//                Observer {
-//                    updateUI(it)
-//                })
-//        }
-//    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val userId = Firebase.auth.currentUser!!.uid
+        lifecycleScope.launch {
+            cartViewModel.productDetails(userId).observe(viewLifecycleOwner,
+
+                Observer { list ->
+
+                        updateUI(list)
+
+
+                    Log.e(TAG,"the cart: $list")
+                })
+        }
+    }
     fun Init(view: View) {
         cart_list_reclyec = view.findViewById(R.id.cart_user_recycler)
-//        cartViewModel.cart(id.toString())
     }
 
 
@@ -66,41 +71,50 @@ class CartListProdutorFragment : Fragment() {
         super.onCreate(savedInstanceState)
         firestore= FirebaseFirestore.getInstance()
       //  productId = args.id.toString()
-        cartid=Cart()
+//       cartid=Cart()
     }
 
     override fun onStart() {
         super.onStart()
     }
     private fun updateUI(cartRms: List<Cart>) {
-        val CartAdapter = CartAdapter(cartRms as ArrayList<Cart>)
+        val CartAdapter = CartAdapter(cartRms)
         cart_list_reclyec.adapter=CartAdapter
     }
     inner class CartHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-//        var iamgeProdutor: ImageView?= null
-//        var decrProdutor: TextView?=null
-//        var  addProductor:ImageView?=null
-//        var   subProductor:ImageView?=null
-//        var prince:TextView?=null
-//        var quantity:TextView?=null
-val   quantity:TextView=itemView.findViewById(R.id.prince_imag)
+        var iamgeProdutor: ImageView = itemView.findViewById(R.id.image_prod)
+        var decrProdutor: TextView = itemView.findViewById(R.id.name_productoe)
+
+        var prince: TextView = itemView.findViewById(R.id.upprince_imag)
+        val quantity: TextView = itemView.findViewById(R.id.upprince_imag)
+        val deleProdctor:ImageView=itemView.findViewById(R.id.delet_image)
         private lateinit var titlca: Cart
         fun bind(cart: Cart) {
             titlca = cart
+            iamgeProdutor?.load(cart.product.imageURL)
+
+            decrProdutor.text = cart.product.decpation
+
+            quantity.text = (cart.product.price.toInt() * cart.count).toString()
 
             // superMarketTextView.text
 
+            deleProdctor.setOnClickListener {
+                lifecycleScope.launch {
+                    val user =
+                        firestore.collection("users").document(auth.currentUser!!.uid).get().await()
+                            .toObject(User::class.java)
+                        val newCart = user?.cart?.filter {
+                            it.product.id != titlca.product.id
+                        }
+                        firestore.collection("users").document(auth.currentUser!!.uid)
+                            .update("cart", newCart)
+                    cart_list_reclyec.adapter = CartAdapter(newCart ?: emptyList())
+
+                }
+            }
         }
 
-
-        init {
-//          iamgeProdutor=itemView.findViewById(R.id.image_prod) as ImageView
-//        decrProdutor= itemView.findViewById(R.id.name_productoe)as TextView
-//        addProductor=itemView.findViewById(R.id.add_imag) as ImageView
-//          subProductor=itemView.findViewById(R.id.sub_imag)as ImageView
-//          prince:=itemView.findViewById(R.id.prince_imag) as TextView
-//         val   quantity:TextView=itemView.findViewById(R.id.prince_imag)
-      }
 
     }
 
@@ -114,54 +128,13 @@ val   quantity:TextView=itemView.findViewById(R.id.prince_imag)
 
         override fun onBindViewHolder(holder: CartHolder, position: Int) {
             val cartU = cartList[position]
-            holder.quantity.text=cartU.cart
+//            holder.quantity.text=cartU.cart
             holder.bind(cartU)
-//            holder.decrProdutor!!.text=StringBuilder().append(cartU)
-//            holder.quantity!!.text=StringBuilder("R").append(cartU)
-//            holder.prince!!.text=StringBuilder("").append(cartU)
-
-//            holder.subProductor!!.setOnClickListener { _ ->subCartItem(holder,cartU)}
-//            holder.addProductor!!.setOnClickListener { _ ->addCartItem(holder,cartU
-//
-//            }
         }
 
-//        private fun addCartItem(holder: RecyclerView.ViewHolder, cartU: Cart) {
-//            if (cartU.quantiiy>1)  {
-//                cartU.quantiiy+=1
-//                cartU.totalProd=cartU.quantiiy*cartU.prines!!.toInt()
-//                holder.quantity!!.text=StringBuilder("").append(cartU.quantiiy)
-//                updataFireBase(cartU)
-//            }
-//        }
-
-//        private fun subCartItem(holder: CartListProdutorFragment.CartHolder, cartU: Cart) {
-//         if (cartU.quantiiy>1)  {
-//             cartU.quantiiy-=1
-//             cartU.totalProd=cartU.quantiiy*cartU.prines!!.toInt()
-//                     holder.quantity!!.text=StringBuilder("").append(cartU.quantiiy)
-//             updataFireBase(cartU)
-//         }
-//        }
-
-//        private fun updataFireBase(cartU: Cart) {
-//        }
 
         override fun getItemCount(): Int =cartList.size
     }
 
 
-
-//    private  fun CartHolder.sumProductor() {
-//        lifecycleScope.launch(Dispatchers.IO){
-//            val productorList:MutableList<String> =
-//            (firestore.collection("users").document(Firebase.auth.currentUser?.uid!!)
-//                .get()
-//                .await()
-//                .toObject(User::class.java)
-//                ?.cart?: emptyList() as MutableList<String>
-//            productorList += productor.id
-//                    firestore.collection("users.").document(Firebase.auth.currentUser?.uid!!)
-//                    updata("cart",productorList)
-//        }
     }
