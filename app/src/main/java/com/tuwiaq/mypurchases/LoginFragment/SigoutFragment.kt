@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager.getDefaultSharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.tuwiaq.mypurchases.R
@@ -24,7 +25,6 @@ private const val TAG = "SigoutFragment"
 class SigoutFragment : Fragment() {
 
     private lateinit var singout:TextView
-//    private  val viewModelSinout: sigoutviewModel by lazy { ViewModelProvider(this).get(viewModelSinout::class.java) }
     private lateinit var auth: FirebaseAuth
     private lateinit var user: User
     private lateinit var usertV:TextView
@@ -33,11 +33,13 @@ class SigoutFragment : Fragment() {
     val viewModel:sigoutviewModel by lazy { ViewModelProvider(this).get(sigoutviewModel::class.java) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+         auth = FirebaseAuth.getInstance()
         user= User()
-        loadLocate()
+//        loadLocate()
 
 
     }
+
 
 
     override fun onCreateView(
@@ -58,6 +60,13 @@ class SigoutFragment : Fragment() {
             }
 
         }
+        singout.setOnClickListener {
+           auth.signOut()
+            val navCon = findNavController()
+            val action = SigoutFragmentDirections.actionSigoutFragmentToLoginFragment2()
+            navCon.navigate(action)
+        }
+        loadLocate()
         return view
     }
     fun Init(view: View){
@@ -83,32 +92,6 @@ class SigoutFragment : Fragment() {
 //            finish()
         }
 
-        singout.setOnClickListener {
-//          auth.signOut()
-//            startActivity(
-//                Intent(
-//                context,LoginFragment::class.java
-//            )
-//            )
-//            finish()
-////            val navCon = findNavController()
-//                    val action = R.id.action_cartListProdutorFragment_to_sigoutFragment
-//                    navCon.navigate(action)
-//            when(sigoutviewModel.(uid = Firebase.auth.currentUser?.uid!!)){
-//                "Supermarket" -> {
-//                    val navCon = findNavController()
-//                    val action = R.id.action_listAddSuperFragment_to_sigoutFragment
-//                    navCon.navigate(action)
-//
-//                }
-//                "user" -> {
-//                    val navCon = findNavController()
-//                    val action = R.id.action_cartListProdutorFragment_to_sigoutFragment
-//                    navCon.navigate(action)
-//                }
-//
-//            }
-        }
     }
     private  fun showChangerLang(){
         val listItmes= arrayOf("English","عربي","French")

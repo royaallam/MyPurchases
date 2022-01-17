@@ -91,5 +91,9 @@
         android:id="@+id/sigoutFragment"
         android:name="com.tuwiaq.mypurchases.LoginFragment.SigoutFragment"
         android:label="fragment_sigout"
-        tools:layout="@layout/fragment_sigout" />
+        tools:layout="@layout/fragment_sigout" >
+        <action
+            android:id="@+id/action_sigoutFragment_to_loginFragment2"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
