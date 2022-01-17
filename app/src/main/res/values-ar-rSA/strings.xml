@@ -4,12 +4,10 @@
     <string name="sign_in">تسجيل الدخول</string>
     <string name="email">"الايميل "</string>
     <string name="password">كلمة المرور</string>
-    <string name="resister">تسجيل</string>
     <string name="sign_in_btm">تسجيل الدخول</string>
     <string name="username">"اسم المستخدم "</string>
     <string name="re_password">"اعادة كلمة المرور "</string>
     <string name="decripation">"الوصف "</string>
-    <string name="location">"الموقع "</string>
     <string name="supermarket_item">"سوبرماركت "</string>
     <string name="add">"اضف "</string>
     <string name="product_list">"المنتجات "</string>
@@ -31,4 +29,9 @@
     <string name="person">شخص</string>
     <string name="button">زر</string>
     <string name="hello_blank_fragment">"اهلا بك "</string>
+    <string name="uploed">"تحميل "</string>
+    <string name="select">"اختا ر الصورة "</string>
+    <string name="registration">تسجيل الدخول</string>
+    <string name="Scanner">"اسكان المنتج "</string>
+    <string name="show">عرض</string>
 </resources>

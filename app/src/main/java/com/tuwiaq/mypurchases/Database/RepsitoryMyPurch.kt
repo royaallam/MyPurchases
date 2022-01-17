@@ -254,6 +254,21 @@ class RepsitoryMyPurch private constructor(context: Context) {
         }
 
     }
+    //---------recyle Productor------------//
+    suspend fun EnentChangeListenerPro():LiveData<List<Prodctor>>{
+        return liveData {
+            val datalist = firestore.collection("product")
+
+                .get()
+                .await().toObjects(Prodctor::class.java)
+
+            Log.d(TAG, "EnentChangeListener: $datalist")
+            emit(datalist)
+        }
+
+    }
+
+
 
     ////----------cart----------///
 //    private  fun sumProductor() {

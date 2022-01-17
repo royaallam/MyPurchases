@@ -83,7 +83,7 @@ class ProductorDeatiFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-//        firestore.collection("product").document(uid).get()
+
         firestore.collection("users")
                         .get().addOnSuccessListener { q ->
                 q.documents.forEach {
@@ -92,11 +92,7 @@ class ProductorDeatiFragment : Fragment() {
 
             }
             }
-//                        .addOnSuccessListener { documentReference ->
-//                            Log.d(TAG, "DocumentSnapshot added succssfully")
-//                        }
-//                        .addOnFailureListener { e ->
-//                            Log.w(TAG, "Error adding document", e)
+
 
         firestore.collection("product").document(productId)
             .get().addOnSuccessListener {
@@ -166,14 +162,6 @@ class ProductorDeatiFragment : Fragment() {
             }
             }
 
-
-
-    // proDecViewmodel.cart(id.toString())
-
-
-//    val navCon = findNavController()
-//            val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToCartListProdutorFragment()
-//            navCon.navigate(action)
         }
 
 

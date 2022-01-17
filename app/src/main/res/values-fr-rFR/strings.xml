@@ -6,10 +6,8 @@
     <string name="password">le mot de passe</string>
     <string name="re_password">"re-mot de passe "</string>
     <string name="sign_in_btm">"s'identifier "</string>
-    <string name="resister">résistante</string>
     <string name="username">"Nom d'utilisateur "</string>
     <string name="decripation">description</string>
-    <string name="location">emplacement</string>
     <string name="supermarket_item">"supermarché "</string>
     <string name="add">ajouter</string>
     <string name="product_list">"Produit "</string>
@@ -31,4 +29,9 @@
     <string name="button">"bas "</string>
     <string name="user">utilisatrice</string>
     <string name="hello_blank_fragment">"Bonjour fragment vierge "</string>
+    <string name="uploed">"Chargement "</string>
+    <string name="select">"choisissez l'image "</string>
+    <string name="registration">Se connecter</string>
+    <string name="Scanner">"logement du produit "</string>
+    <string name="show">"Montrer "</string>
 </resources>

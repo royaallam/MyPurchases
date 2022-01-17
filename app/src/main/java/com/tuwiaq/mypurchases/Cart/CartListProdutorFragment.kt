@@ -31,8 +31,7 @@ class CartListProdutorFragment : Fragment() {
     private lateinit var cart_list_reclyec:RecyclerView
     private  val cartViewModel: CartListProdutorViewModel by lazy { ViewModelProvider(this).get(CartListProdutorViewModel::class.java) }
     private lateinit var firestore: FirebaseFirestore
-//    private lateinit var cartid:Cart
-    private lateinit var auto: FirebaseAuth
+
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -70,8 +69,7 @@ class CartListProdutorFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         firestore= FirebaseFirestore.getInstance()
-      //  productId = args.id.toString()
-//       cartid=Cart()
+
     }
 
     override fun onStart() {
@@ -97,7 +95,6 @@ class CartListProdutorFragment : Fragment() {
 
             quantity.text = (cart.product.price.toInt() * cart.count).toString()
 
-            // superMarketTextView.text
 
             deleProdctor.setOnClickListener {
                 lifecycleScope.launch {
@@ -128,7 +125,7 @@ class CartListProdutorFragment : Fragment() {
 
         override fun onBindViewHolder(holder: CartHolder, position: Int) {
             val cartU = cartList[position]
-//            holder.quantity.text=cartU.cart
+
             holder.bind(cartU)
         }
 

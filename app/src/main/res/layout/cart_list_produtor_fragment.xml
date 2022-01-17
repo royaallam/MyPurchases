@@ -10,28 +10,30 @@
         android:id="@+id/panel"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="#E7E7e7"
+        android:background="#880707"
         android:orientation="horizontal"
         android:weightSum="16">
 
         <ImageButton
             android:id="@+id/btn_left"
-            android:layout_gravity="start|center_vertical"
             android:layout_width="0sp"
+            android:background="#880707"
             android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
             android:layout_weight="2"
             app:srcCompat="@drawable/image_left" />
 
         <TextView
             android:id="@+id/productTv"
-            android:layout_gravity="center_vertical"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="center"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_weight="11"
-            android:text="Cart List" />
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="Cart List"
+            android:textSize="25sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

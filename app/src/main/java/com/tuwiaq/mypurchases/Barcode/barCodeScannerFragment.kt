@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -19,7 +20,7 @@ import com.tuwiaq.mypurchases.R
 
 private const val TAG = "barCodeScannerFragment"
 class barCodeScannerFragment : Fragment() {
-    private lateinit var codebarBtn: Button
+    private lateinit var codebarBtn: ImageView
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

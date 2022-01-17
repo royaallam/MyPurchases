@@ -10,7 +10,9 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,12 +24,14 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.tuwiaq.mypurchases.R
+import com.tuwiaq.mypurchases.Supermarket.SuperMarkt
+import kotlinx.coroutines.launch
 
 
 class UserProdutorFragment : Fragment() {
     private lateinit var list_user_add: RecyclerView
     var firestore= Firebase.firestore
-    val ListaddUser by lazy { ViewModelProvider(this).get(UserProdutorViewModel::class.java)
+    val userProViewModel by lazy { ViewModelProvider(this).get(UserProdutorViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -40,29 +44,38 @@ class UserProdutorFragment : Fragment() {
         list_user_add.layoutManager = LinearLayoutManager(context)
         list_user_add.hasFixedSize()
 
-        EnentChangeListener()
 
         return view
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        lifecycleScope.launch {
+
+            userProViewModel.EnentChangeListenerPro().observe(viewLifecycleOwner,
+                Observer {
+                    updateUI(it)
+                })
+
+        }
     }
 
     fun Init(view: View) {
         list_user_add = view.findViewById(R.id.cart_user_recycler)
 
     }
+    private fun updateUI(userListPr: List<Prodctor>) {
+        val UserprodutorAdapter = UserprodutorAdapter(userListPr as ArrayList<Prodctor>)
+      list_user_add.adapter=UserprodutorAdapter
+    }
 
     inner class UserprodutorHolder(view: View) : RecyclerView.ViewHolder(view) {
         val iamgePro: ImageView = itemView.findViewById(R.id.pro_item_iamg)
         val decripation: TextView = itemView.findViewById(R.id.decrpation_item)
-        val  slowProductpe:Button=itemView.findViewById(R.id.button)
+        val  slowProductpe:Button=itemView.findViewById(R.id.sh_btm)
 
         private lateinit var titleProUser: Prodctor
         fun bind(prodctor: Prodctor) {
             titleProUser = prodctor
-//            firestore.collection("product").
-//            document(Firebase.auth.currentUser?.uid!!).get().addOnSuccessListener {
-//                val prodctor=it.toObject(Prodctor::class.java)!!
-//                iamgePro.load(prodctor.imageURL)
-//            }
             slowProductpe.setOnClickListener {
                 val navCon = findNavController()
                 val action = UserProdutorFragmentDirections.actionUserProdutorFragment2ToProductorDeatiFragment(prodctor.id)
@@ -91,24 +104,7 @@ class UserProdutorFragment : Fragment() {
 
 
         }
-    fun EnentChangeListener(){
-        firestore.collection("product")
-            . addSnapshotListener(object : EventListener<QuerySnapshot> {
-                override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                    if (error!=null){
-                        Log.e("FireStore_error","${error.message.toString()},errors in fireStore of supermarket list")
-                        return
-                    }
-                    val prodctorList =
-                        value?.toObjects(Prodctor::class.java) as ArrayList<Prodctor>
-                   list_user_add .adapter = UserprodutorAdapter(prodctorList)
 
-                }
-
-            })
-
-
-    }
 
 
 

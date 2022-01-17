@@ -7,49 +7,54 @@
 
     <TextView
         android:id="@+id/sign_intext"
-        android:layout_width="74dp"
-        android:layout_height="44dp"
+        android:layout_width="285sp"
+        android:layout_height="55sp"
         android:text="@string/sign_in"
+        android:textColor="#880707"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.253"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintVertical_bias="0.143" />
 
     <EditText
         android:id="@+id/email_edittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="292sp"
+        android:layout_height="47sp"
         android:ems="10"
+        android:fontFamily="sans-serif-black"
         android:hint="@string/email"
-        android:textColorLink="#000051"
         android:inputType="textEmailAddress"
+        android:textColor="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintVertical_bias="0.277" />
 
     <EditText
         android:id="@+id/pass_edittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="287sp"
+        android:layout_height="46sp"
         android:ems="10"
+        android:fontFamily="sans-serif-black"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:textColor="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396" />
+        app:layout_constraintVertical_bias="0.395" />
 
     <Button
         android:id="@+id/signin_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200sp"
+        android:layout_height="50sp"
         android:text="@string/sign_in_btm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,8 +65,8 @@
 
     <Button
         android:id="@+id/resister_btn"
-        android:layout_width="346dp"
-        android:layout_height="83dp"
+        android:layout_width="346sp"
+        android:layout_height="83sp"
         android:text="@string/registration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,37 +75,6 @@
         app:layout_constraintTop_toBottomOf="@+id/signin_btn"
         app:layout_constraintVertical_bias="0.396" />
 
-
-    <!--    <com.google.android.material.bottomappbar.BottomAppBar-->
-<!--        android:id="@+id/bottomAppBar"-->
-<!--        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        android:backgroundTint="@color/white"-->
-<!--        app:fabCradleMargin="20sp"-->
-<!--        app:fabCradleRoundedCornerRadius="60sp">-->
-
-<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--            android:id="@+id/bottomNavigationView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@android:color/transparent"-->
-<!--            app:menu="@menu/meau" />-->
-
-<!--    </com.google.android.material.bottomappbar.BottomAppBar>-->
-
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/floatingActionButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:backgroundTint="@color/white"-->
-<!--        android:src="@drawable/image_cart"-->
-<!--        app:layout_anchor="@id/bottomAppBar"-->
-<!--        app:maxImageSize="50sp"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="16dp"-->
-<!--        tools:layout_editor_absoluteY="55dp" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
