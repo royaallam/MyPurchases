@@ -77,7 +77,7 @@ class ProductorDeatiFragment : Fragment() {
        addPro=view.findViewById(R.id.add_pro)
        subPro=view.findViewById(R.id.sub_prod)
       addCart=view.findViewById(R.id.add_cart)
-       preBut=view.findViewById(R.id.profel)
+
     }
 
     override fun onStart() {
@@ -121,11 +121,7 @@ class ProductorDeatiFragment : Fragment() {
             numPro.text= count.toString()
 
         }
-        preBut.setOnClickListener {
-            val navCon = findNavController()
-            val action = ProductorDeatiFragmentDirections.actionProductorDeatiFragmentToSigoutFragment()
-            navCon.navigate(action)
-        }
+
         addCart.setOnClickListener {
             if(count != 0){
             Toast.makeText(requireContext(),"addcart", Toast.LENGTH_LONG).show()

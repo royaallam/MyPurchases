@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/mapSMFragment"
-        android:name="com.tuwiaq.mypurchases.Location.MapSuperMarketFragment"
+        android:name="com.tuwiaq.mypurchases.Location.SuperMarketFragment"
         android:label="MapSuperMarketFragment" >
         <action
             android:id="@+id/action_mapSMFragment_to_superMarketViewFragment"
@@ -76,13 +76,10 @@
         android:id="@+id/productorDeatiFragment"
         android:name="com.tuwiaq.mypurchases.Productorslow.ProductorDeatiFragment"
         android:label="fragment_productor_deati"
-        tools:layout="@layout/fragment_productor_deati" >
+        >
         <argument
             android:name="id"
             app:argType="string" />
-        <action
-            android:id="@+id/action_productorDeatiFragment_to_sigoutFragment"
-            app:destination="@id/sigoutFragment" />
         <action
             android:id="@+id/action_productorDeatiFragment_to_cartListProdutorFragment"
             app:destination="@id/cartListProdutorFragment" />
@@ -91,9 +88,5 @@
         android:id="@+id/sigoutFragment"
         android:name="com.tuwiaq.mypurchases.LoginFragment.SigoutFragment"
         android:label="fragment_sigout"
-        tools:layout="@layout/fragment_sigout" >
-        <action
-            android:id="@+id/action_sigoutFragment_to_loginFragment2"
-            app:destination="@id/loginFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_sigout" />
 </navigation>

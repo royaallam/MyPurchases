@@ -62,9 +62,6 @@ class SigoutFragment : Fragment() {
         }
         singout.setOnClickListener {
            auth.signOut()
-            val navCon = findNavController()
-            val action = SigoutFragmentDirections.actionSigoutFragmentToLoginFragment2()
-            navCon.navigate(action)
         }
         loadLocate()
         return view

@@ -52,4 +52,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <ImageView
+        android:id="@+id/edit_image"
+        android:layout_width="42dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/image_prod"
+        app:layout_constraintTop_toBottomOf="@+id/delet_image"
+        app:srcCompat="@drawable/image_edit" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

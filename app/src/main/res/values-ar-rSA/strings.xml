@@ -25,7 +25,7 @@
     <string name="supermarket">سوبرماركت</string>
     <string name="upload">"تحميل "</string>
     <string name="change_language">"اختار اللغة "</string>
-    <string name="home">بيت</string>
+    <string name="home">حالية</string>
     <string name="person">شخص</string>
     <string name="button">زر</string>
     <string name="hello_blank_fragment">"اهلا بك "</string>
@@ -34,4 +34,7 @@
     <string name="registration">تسجيل الدخول</string>
     <string name="Scanner">"اسكان المنتج "</string>
     <string name="show">عرض</string>
+    <string name="profiel">"الصفحة الشخصية "</string>
+    <string name="supermarket_list">"سبوماركت  "</string>
+    <string name="cart_list">"السلة "</string>
 </resources>

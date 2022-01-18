@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#F88383"
-        android:src="@drawable/image_scanner"
+        android:src="@drawable/image_cart"
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="50sp"
         tools:ignore="MissingConstraints"

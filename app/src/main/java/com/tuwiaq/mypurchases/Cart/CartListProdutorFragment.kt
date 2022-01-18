@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -20,6 +21,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.tuwiaq.mypurchases.LoginFragment.LoginFragmentDirections
 import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.RegisterFragment.User
 import com.tuwiaq.mypurchases.UserProductor.Prodctor
@@ -82,7 +84,7 @@ class CartListProdutorFragment : Fragment() {
     inner class CartHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
         var iamgeProdutor: ImageView = itemView.findViewById(R.id.image_prod)
         var decrProdutor: TextView = itemView.findViewById(R.id.name_productoe)
-
+        val editProductor:ImageView=itemView.findViewById(R.id.edit_image)
         var prince: TextView = itemView.findViewById(R.id.upprince_imag)
         val quantity: TextView = itemView.findViewById(R.id.upprince_imag)
         val deleProdctor:ImageView=itemView.findViewById(R.id.delet_image)
@@ -95,7 +97,9 @@ class CartListProdutorFragment : Fragment() {
 
             quantity.text = (cart.product.price.toInt() * cart.count).toString()
 
+            editProductor.setOnClickListener {
 
+            }
             deleProdctor.setOnClickListener {
                 lifecycleScope.launch {
                     val user =

@@ -34,4 +34,7 @@
     <string name="registration">Se connecter</string>
     <string name="Scanner">"logement du produit "</string>
     <string name="show">"Montrer "</string>
+    <string name="profiel">"profil "</string>
+    <string name="supermarket_list">Supermarché</string>
+    <string name="cart_list">Chariot</string>
 </resources>
