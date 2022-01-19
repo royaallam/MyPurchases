@@ -76,4 +76,14 @@
         app:layout_constraintStart_toEndOf="@+id/image_prod"
         app:layout_constraintTop_toBottomOf="@+id/upprince_imag" />
 
+    <ImageView
+        android:id="@+id/efit_pro"
+        android:layout_width="41dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/delet_image"
+        app:srcCompat="@drawable/image_edit" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

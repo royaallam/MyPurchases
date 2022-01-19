@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager.getDefaultSharedPreferences
 import com.google.firebase.auth.FirebaseAuth
+import com.tuwiaq.mypurchases.MainActivity
 import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.RegisterFragment.User
 import kotlinx.coroutines.launch
@@ -54,15 +55,19 @@ class SigoutFragment : Fragment() {
             viewModel.Profile().observe(
                 viewLifecycleOwner
             ) {
-                usertV.text = it.userName
-                emailtv.text=it.emailEText
-                Log.d(TAG, "onCreateView: ${it.userName}")
+                it?.let { user ->
+                    usertV.text = user.userName
+                    emailtv.text= user.emailEText
+                    Log.d(TAG, "onCreateView: ${user.userName}")
+                }
             }
 
         }
         singout.setOnClickListener {
            auth.signOut()
+            findNavController().popBackStack()
         }
+
         loadLocate()
         return view
     }
@@ -84,9 +89,8 @@ class SigoutFragment : Fragment() {
 
         choseLang.setOnClickListener {
             showChangerLang()
-//            val intent=Intent(requireContext(),MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
+            startActivity(Intent(requireContext(),MainActivity::class.java))
+            activity?.finish()
         }
 
     }

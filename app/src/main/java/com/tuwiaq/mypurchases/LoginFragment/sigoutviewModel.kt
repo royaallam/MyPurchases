@@ -7,7 +7,7 @@ import com.tuwiaq.mypurchases.RegisterFragment.User
 
 class sigoutviewModel:ViewModel() {
     private val repsitorymypurch= RepsitoryMyPurch.get()
-    suspend fun Profile(): LiveData<User> {
+    suspend fun Profile(): LiveData<User?> {
         return repsitorymypurch.Profile()
     }
 }

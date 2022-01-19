@@ -89,6 +89,7 @@ class CartListProdutorFragment : Fragment() {
         val quantity: TextView = itemView.findViewById(R.id.upprince_imag)
         val deleProdctor:ImageView=itemView.findViewById(R.id.delet_image)
         val idpro:TextView=itemView.findViewById(R.id.id_pro)
+        val editPro:ImageView=itemView.findViewById(R.id.efit_pro)
         private lateinit var titlca: Cart
         fun bind(cart: Cart) {
             titlca = cart
@@ -97,9 +98,10 @@ class CartListProdutorFragment : Fragment() {
             decrProdutor.text = cart.product.decpation
             idpro.text=cart.product.codebar
             prince.text=cart.product.price
-            quantity.text = (cart.product.price.toInt() * cart.count).toString()
-
-
+            quantity.text = (cart.product.price.toDouble() * cart.count).toString()
+            editPro.setOnClickListener {
+                findNavController().popBackStack()
+            }
             deleProdctor.setOnClickListener {
                 lifecycleScope.launch {
                     val user =

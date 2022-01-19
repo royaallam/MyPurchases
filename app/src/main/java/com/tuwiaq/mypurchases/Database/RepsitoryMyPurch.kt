@@ -149,19 +149,19 @@ class RepsitoryMyPurch private constructor(context: Context) {
     }
 
     //----------sinout ---------///
-    suspend fun Profile():LiveData<User> {
+    suspend fun Profile():LiveData<User?> {
+        var userInfo: User? = null
         return liveData {
-            val userInfo=  firestore.collection("users")
-                .document(Firebase.auth.currentUser?.uid!!)
-              .get()
-                .await()
-                .toObject(User::class.java)
-          //  Log.d(TAG, "Profile: $userInfo")
-
-            if (userInfo!=null){
-                emit(userInfo)
+            Firebase.auth.currentUser?.uid?.let {
+                userInfo=  firestore.collection("users")
+                    .document(it)
+                    .get()
+                    .await()
+                    .toObject(User::class.java)
             }
 
+          //  Log.d(TAG, "Profile: $userInfo")
+            emit(userInfo)
         }
     }
 
