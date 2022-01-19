@@ -54,9 +54,9 @@
 
     <EditText
         android:id="@+id/edittext_email"
-        android:layout_width="275dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="275sp"
+        android:layout_height="43sp"
+        android:layout_marginTop="32sp"
         android:ems="10"
         android:hint="@string/email"
         android:textColorLink="@color/black"
@@ -83,9 +83,9 @@
 
     <EditText
         android:id="@+id/re_password_edtext"
-        android:layout_width="275dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="275sp"
+        android:layout_height="48sp"
+        android:layout_marginTop="24sp"
         android:ems="10"
         android:hint="@string/re_password"
         android:inputType="textPassword"
@@ -97,8 +97,8 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="310dp"
-        android:layout_height="97dp"
+        android:layout_width="310sp"
+        android:layout_height="97sp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/resis_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,10 +109,10 @@
 
         <RadioButton
             android:id="@+id/radio_user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="48dp"
+            android:layout_width="70sp"
+            android:layout_height="80sp"
+            android:layout_marginStart="36sp"
+            android:layout_marginTop="48sp"
             android:text="@string/user"
             app:layout_constraintBottom_toTopOf="@+id/resis_btn"
             app:layout_constraintStart_toStartOf="parent"
@@ -121,10 +121,10 @@
 
         <RadioButton
             android:id="@+id/radio_supermarket"
-            android:layout_width="151dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="92dp"
+            android:layout_width="155sp"
+            android:layout_height="70sp"
+            android:layout_marginTop="48sp"
+            android:layout_marginEnd="92sp"
             android:text="@string/supermarket"
             app:layout_constraintBottom_toTopOf="@+id/resis_btn"
             app:layout_constraintEnd_toEndOf="parent"

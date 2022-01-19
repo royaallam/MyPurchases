@@ -9,10 +9,11 @@
 
     <Button
         android:id="@+id/chose_lan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="400dp"
+        android:layout_width="250sp"
+        android:layout_height="50sp"
+        android:layout_marginStart="88sp"
+        android:layout_marginTop="400sp"
+        android:background="@drawable/cutom_btm"
         android:text="@string/change_language"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,10 +21,10 @@
 
     <TextView
         android:id="@+id/user_name"
-        android:layout_width="176dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="192dp"
-        android:layout_marginTop="244dp"
+        android:layout_width="176sp"
+        android:layout_height="26sp"
+        android:layout_marginStart="216dp"
+        android:layout_marginTop="252dp"
         android:fontFamily="sans-serif-black"
         android:text="TextView"
         android:textSize="16sp"
@@ -32,10 +33,10 @@
 
     <TextView
         android:id="@+id/email_tv"
-        android:layout_width="186sp"
-        android:layout_height="36sp"
-        android:layout_marginStart="192dp"
-        android:layout_marginTop="304dp"
+        android:layout_width="176sp"
+        android:layout_height="26sp"
+        android:layout_marginStart="192sp"
+        android:layout_marginTop="304sp"
         android:fontFamily="sans-serif-black"
         android:text="TextView"
         android:textSize="16sp"
@@ -44,9 +45,9 @@
 
     <Button
         android:id="@+id/logout_btm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="150sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="40sp"
         android:text="@string/log_out"
         android:textColor="@color/white"
         android:background="@drawable/cutom_btm"
@@ -66,7 +67,7 @@
         android:textColor="@color/purple_700"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         tools:ignore="MissingConstraints" />
@@ -78,8 +79,7 @@
         android:layout_marginTop="100dp"
         android:src="@drawable/image_person"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.869"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -99,16 +99,16 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="105dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="105sp"
+        android:layout_height="41sp"
+        android:layout_marginTop="12sp"
         android:fontFamily="sans-serif-black"
         android:text="@string/email"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#880707"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 

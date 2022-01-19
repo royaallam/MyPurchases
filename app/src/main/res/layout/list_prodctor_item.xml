@@ -7,15 +7,14 @@
 
     <TextView
         android:id="@+id/decrpation_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="104dp"
+        android:layout_width="150sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="36sp"
+        android:layout_marginEnd="68sp"
         android:fontFamily="sans-serif-black"
         android:text="@string/decripa_pro"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/pro_item_iamg"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,19 +22,22 @@
         android:id="@+id/pro_item_iamg"
         android:layout_width="150sp"
         android:layout_height="150sp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="24sp"
+        android:layout_marginTop="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/sh_btm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="76dp"
+        android:layout_width="150sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="84sp"
+        android:layout_marginEnd="76sp"
         android:text="@string/show"
+        android:background="@drawable/cutom_btm"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/pro_item_iamg"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

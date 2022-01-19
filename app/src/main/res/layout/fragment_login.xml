@@ -53,9 +53,10 @@
 
     <Button
         android:id="@+id/signin_btn"
-        android:layout_width="200sp"
+        android:layout_width="250sp"
         android:layout_height="50sp"
         android:text="@string/sign_in_btm"
+        android:background="@drawable/cutom_btm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -65,9 +66,10 @@
 
     <Button
         android:id="@+id/resister_btn"
-        android:layout_width="346sp"
-        android:layout_height="83sp"
+        android:layout_width="350sp"
+        android:layout_height="90sp"
         android:text="@string/registration"
+        android:background="@drawable/cutom_btm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"

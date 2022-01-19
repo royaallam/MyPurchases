@@ -7,25 +7,25 @@
 
     <Button
         android:id="@+id/view_supermarketBTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="36dp"
+        android:layout_width="150sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="16sp"
+        android:layout_marginEnd="36sp"
         android:text="@string/show"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titilesupermarketTv"
-        android:layout_width="219dp"
-        android:layout_height="65dp"
+        android:layout_width="150sp"
+        android:layout_height="65sp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/supermarket_item"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/view_supermarketBTN"
-        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

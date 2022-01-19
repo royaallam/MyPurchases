@@ -8,11 +8,11 @@
 
     <Button
         android:id="@+id/location_btm"
-        android:layout_width="350dp"
-        android:layout_height="117dp"
-        android:layout_marginStart="28dp"
-        android:background="#FCCACA"
+        android:layout_width="350sp"
+        android:layout_height="117sp"
+        android:layout_marginStart="28sp"
         android:text="@string/supermarket"
+        android:background="@drawable/cutom_btm"
         android:textColorHighlight="#810D0D"
         android:textColorLink="#FCCACA"
         app:layout_constraintBottom_toBottomOf="parent"

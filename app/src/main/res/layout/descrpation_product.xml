@@ -7,9 +7,9 @@
 
     <ImageView
         android:id="@+id/image_produtor"
-        android:layout_width="252dp"
-        android:layout_height="151dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="252sp"
+        android:layout_height="151sp"
+        android:layout_marginTop="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,9 +30,9 @@
 
     <TextView
         android:id="@+id/barcode_pro"
-        android:layout_width="227dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="227sp"
+        android:layout_height="51sp"
+        android:layout_marginTop="32sp"
         android:fontFamily="sans-serif-black"
         android:text="@string/barcode_pro"
         android:textSize="16sp"
@@ -42,30 +42,31 @@
 
     <ImageView
         android:id="@+id/sub_prod"
-        android:layout_width="63dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="396dp"
+        android:layout_width="63sp"
+        android:layout_height="34sp"
+        android:layout_marginStart="52sp"
+        android:layout_marginTop="396sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/image_sub" />
 
     <ImageView
         android:id="@+id/add_pro"
-        android:layout_width="57dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="396dp"
-        android:layout_marginEnd="92dp"
+        android:layout_width="63sp"
+        android:layout_height="34sp"
+        android:layout_marginTop="396sp"
+        android:layout_marginEnd="52sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/image_add" />
 
     <Button
         android:id="@+id/add_cart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="212dp"
+        android:layout_width="150sp"
+        android:layout_height="50sp"
+        android:layout_marginBottom="212sp"
         android:text="@string/addcart"
+        android:background="@drawable/cutom_btm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -74,8 +75,8 @@
 
     <TextView
         android:id="@+id/qutity_prodctor"
-        android:layout_width="85dp"
-        android:layout_height="27dp"
+        android:layout_width="90sp"
+        android:layout_height="30sp"
         android:fontFamily="sans-serif-black"
         android:text="@string/qutity_pro"
         android:textSize="16sp"
