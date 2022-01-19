@@ -19,7 +19,7 @@
         android:id="@+id/name_productoe"
         android:layout_width="187dp"
         android:layout_height="32dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="52dp"
         android:fontFamily="sans-serif-black"
         android:text="TextView"
         android:textSize="16sp"
@@ -52,15 +52,28 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/edit_image"
-        android:layout_width="42dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+    <TextView
+        android:id="@+id/id_pro"
+        android:layout_width="140dp"
+        android:layout_height="33dp"
+        android:fontFamily="sans-serif-black"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/delet_image"
         app:layout_constraintStart_toEndOf="@+id/image_prod"
-        app:layout_constraintTop_toBottomOf="@+id/delet_image"
-        app:srcCompat="@drawable/image_edit" />
+        tools:layout_editor_absoluteY="13dp" />
+
+    <TextView
+        android:id="@+id/prince_pro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toEndOf="@+id/image_prod"
+        app:layout_constraintTop_toBottomOf="@+id/upprince_imag" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

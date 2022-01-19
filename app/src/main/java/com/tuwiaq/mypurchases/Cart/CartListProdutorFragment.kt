@@ -25,6 +25,7 @@ import com.tuwiaq.mypurchases.LoginFragment.LoginFragmentDirections
 import com.tuwiaq.mypurchases.R
 import com.tuwiaq.mypurchases.RegisterFragment.User
 import com.tuwiaq.mypurchases.UserProductor.Prodctor
+import com.tuwiaq.mypurchases.UserProductor.UserProdutorFragmentDirections
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
@@ -84,22 +85,21 @@ class CartListProdutorFragment : Fragment() {
     inner class CartHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
         var iamgeProdutor: ImageView = itemView.findViewById(R.id.image_prod)
         var decrProdutor: TextView = itemView.findViewById(R.id.name_productoe)
-        val editProductor:ImageView=itemView.findViewById(R.id.edit_image)
-        var prince: TextView = itemView.findViewById(R.id.upprince_imag)
+        var prince: TextView = itemView.findViewById(R.id.prince_pro)
         val quantity: TextView = itemView.findViewById(R.id.upprince_imag)
         val deleProdctor:ImageView=itemView.findViewById(R.id.delet_image)
+        val idpro:TextView=itemView.findViewById(R.id.id_pro)
         private lateinit var titlca: Cart
         fun bind(cart: Cart) {
             titlca = cart
             iamgeProdutor?.load(cart.product.imageURL)
 
             decrProdutor.text = cart.product.decpation
-
+            idpro.text=cart.product.codebar
+            prince.text=cart.product.price
             quantity.text = (cart.product.price.toInt() * cart.count).toString()
 
-            editProductor.setOnClickListener {
 
-            }
             deleProdctor.setOnClickListener {
                 lifecycleScope.launch {
                     val user =
@@ -108,7 +108,8 @@ class CartListProdutorFragment : Fragment() {
                         val newCart = user?.cart?.filter {
                             it.product.id != titlca.product.id
                         }
-                        firestore.collection("users").document(auth.currentUser!!.uid)
+
+                       firestore.collection("users").document(auth.currentUser!!.uid)
                             .update("cart", newCart)
                     cart_list_reclyec.adapter = CartAdapter(newCart ?: emptyList())
 

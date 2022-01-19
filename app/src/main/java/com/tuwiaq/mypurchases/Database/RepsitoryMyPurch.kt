@@ -49,10 +49,6 @@ class RepsitoryMyPurch private constructor(context: Context) {
                 ?: throw IllegalStateException("My purchases Repositor must be initialized")
         }
     }
-//    private fun showToast(msg: String) {
-//        Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
-//
-//    }
 
     //////////////////------log in -----//////////////////////
 
@@ -169,17 +165,7 @@ class RepsitoryMyPurch private constructor(context: Context) {
         }
     }
 
-//----------cart---------///////
-//    fun cartPro():LiveData<List<Cart>>{
-//        return LiveData{
-//            val listdata=firestore.collection("users").whereEqualTo("caet",)
-//            .get()
-//                .await().toObjects(Cart::class.java)
-//            emptyList(listdata)
-//
-//
-//        }
-//    }
+
     fun cartPro(userId:String):LiveData<List<Cart>>{
         return liveData {
             val listdata = firestore.collection("users").whereEqualTo("id",userId)
@@ -213,19 +199,7 @@ class RepsitoryMyPurch private constructor(context: Context) {
            emit(user.cart)
        }
     }
-//    fun cartProductor( cart:Cart){
-//
-//        val ref =firestore.collection("Cart").document()
-//        cart.id = ref.id
-//        ref.set(cart)
-//
-//    }
-//    fun cart(docId:String,id:String){
-//        val a = hashMapOf<String, String>(
-//            "prodId" to id
-//        )
-//        firestore.collection("users").document(docId).update("cart",FieldValue.arrayUnion(id))
-//    }
+
 
     fun cart(id:String):String {
     val a= firestore.collection("product").document().id
@@ -268,22 +242,6 @@ class RepsitoryMyPurch private constructor(context: Context) {
 
     }
 
-
-
-    ////----------cart----------///
-//    private  fun sumProductor() {
-//        val produvtorList:MutableList <String> = (firestore.collection("users").document(f))
-//    }
-    ////////prductor
-//    suspend fun EnentChangeListeneriAM(id: String):Prodctor? {
-//
-//    return    firestore.collection("product").document(id)
-//
-//            .get()
-//            .await()
-//            .toObject(Prodctor::class.java)
-//
-//    }
 
 
     }

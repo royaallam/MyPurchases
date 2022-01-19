@@ -13,7 +13,9 @@
             app:destination="@id/mapSMFragment" />
         <action
             android:id="@+id/action_loginFragment_to_registerFragment3"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/anim_slilde_in_left"
+            app:exitAnim="@anim/anim_silder_out_left" />
         <action
             android:id="@+id/action_loginFragment_to_barCodeScannerFragment"
             app:destination="@id/barCodeScannerFragment" />
@@ -25,15 +27,19 @@
         tools:layout="@layout/fragment_register" >
         <action
             android:id="@+id/action_registerFragment_to_loginFragment3"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_silde_out_right" />
     </fragment>
     <fragment
         android:id="@+id/mapSMFragment"
-        android:name="com.tuwiaq.mypurchases.Location.SuperMarketFragment"
+        android:name="com.tuwiaq.mypurchases.Location.mapSuperMarketFragment"
         android:label="MapSuperMarketFragment" >
         <action
             android:id="@+id/action_mapSMFragment_to_superMarketViewFragment"
-            app:destination="@id/superMarketViewFragment" />
+            app:destination="@id/superMarketViewFragment"
+            app:enterAnim="@anim/anim_slilde_in_left"
+            app:exitAnim="@anim/anim_silder_out_left" />
     </fragment>
     <fragment
         android:id="@+id/barCodeScannerFragment"
@@ -54,7 +60,9 @@
         android:label="SuperMarketViewFragment" >
         <action
             android:id="@+id/action_superMarketViewFragment_to_userProdutorFragment2"
-            app:destination="@id/userProdutorFragment2" />
+            app:destination="@id/userProdutorFragment2"
+            app:enterAnim="@anim/anim_slilde_in_left"
+            app:exitAnim="@anim/anim_silder_out_left" />
     </fragment>
     <fragment
         android:id="@+id/userProdutorFragment2"
@@ -62,7 +70,9 @@
         android:label="UserProdutorFragment" >
         <action
             android:id="@+id/action_userProdutorFragment2_to_productorDeatiFragment"
-            app:destination="@id/productorDeatiFragment" />
+            app:destination="@id/productorDeatiFragment"
+            app:enterAnim="@anim/anim_slilde_in_left"
+            app:exitAnim="@anim/anim_silder_out_left" />
     </fragment>
     <fragment
         android:id="@+id/listAddSuperFragment"
@@ -82,7 +92,9 @@
             app:argType="string" />
         <action
             android:id="@+id/action_productorDeatiFragment_to_cartListProdutorFragment"
-            app:destination="@id/cartListProdutorFragment" />
+            app:destination="@id/cartListProdutorFragment"
+            app:enterAnim="@anim/anim_slilde_in_left"
+            app:exitAnim="@anim/anim_silder_out_left" />
     </fragment>
     <fragment
         android:id="@+id/sigoutFragment"

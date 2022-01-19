@@ -28,7 +28,7 @@ class ListAddSuperFragment : Fragment() {
     private lateinit var DecpationEd: EditText
     private lateinit var PriceEd: EditText
     private lateinit var AddBtn: Button
-    private lateinit var selectImage: Button
+    private lateinit var selectImage: ImageView
     val addProductorsuperViewModel by lazy { ViewModelProvider(
         this).get(ListAddsupermarketProduViewModel::class.java) }
     private lateinit var auto: FirebaseAuth
@@ -81,6 +81,7 @@ class ListAddSuperFragment : Fragment() {
 
 
         AddBtn.setOnClickListener {
+            Toast.makeText(requireContext(),"add prodtor",Toast.LENGTH_LONG).show()
             val codebar = CodebarTv.text.toString()
             val decpation = DecpationEd.text.toString()
             val price = PriceEd.text.toString()

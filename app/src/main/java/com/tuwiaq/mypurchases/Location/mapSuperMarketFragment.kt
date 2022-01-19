@@ -20,7 +20,7 @@ import com.tuwiaq.mypurchases.LoginFragment.LoginFragmentDirections
 
 import com.tuwiaq.mypurchases.R
 
-class SuperMarketFragment : Fragment() {
+class mapSuperMarketFragment : Fragment() {
 
     private lateinit var locationBtm: Button
 
@@ -38,7 +38,7 @@ class SuperMarketFragment : Fragment() {
         super.onStart()
         locationBtm.setOnClickListener {
                val navCon = findNavController()
-               val action = SuperMarketFragmentDirections.actionMapSMFragmentToSuperMarketViewFragment()
+               val action = mapSuperMarketFragmentDirections.actionMapSMFragmentToSuperMarketViewFragment()
                navCon.navigate(action)
         }
 

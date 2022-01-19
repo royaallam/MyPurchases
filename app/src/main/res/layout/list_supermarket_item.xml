@@ -19,12 +19,13 @@
         android:id="@+id/titilesupermarketTv"
         android:layout_width="219dp"
         android:layout_height="65dp"
-        android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/supermarket_item"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/view_supermarketBTN"
+        app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

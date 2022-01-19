@@ -42,9 +42,9 @@
 
     <ImageView
         android:id="@+id/sub_prod"
-        android:layout_width="80dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="32dp"
+        android:layout_width="63dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="396dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -52,10 +52,10 @@
 
     <ImageView
         android:id="@+id/add_pro"
-        android:layout_width="85dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="392dp"
-        android:layout_marginEnd="48dp"
+        android:layout_width="57dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="396dp"
+        android:layout_marginEnd="92dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/image_add" />

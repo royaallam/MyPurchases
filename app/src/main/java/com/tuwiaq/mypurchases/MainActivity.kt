@@ -14,9 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import androidx.work.WorkRequest
+import androidx.work.*
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -24,11 +22,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tuwiaq.mypurchases.Cart.CartListProdutorFragment
 import com.tuwiaq.mypurchases.LoginFragment.LoginFragmentDirections
+import com.tuwiaq.mypurchases.LoginFragment.MyWorker
 //import com.tuwiaq.mypurchases.LoginFragment.MyWorker
 import com.tuwiaq.mypurchases.LoginFragment.SigoutFragment
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 
 private const val TAG = "MainActivity"
 private const val SUPERMARKET="Supermarket"
@@ -57,8 +57,8 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationView.background = null
         val appBarConfiguration =
-            AppBarConfiguration(setOf(R.id.mapSMFragment, R.id.sigoutFragment))
-        setupActionBarWithNavController(navController, appBarConfiguration)
+           // AppBarConfiguration(setOf(R.id.mapSMFragment, R.id.sigoutFragment))
+       // setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
 //        bottomNavigationView.menu.getItem(0).isEnabled=false
         val navController = Navigation.findNavController(this, R.id.fragment_container)
@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
         navController()
         flaotNav()
 //        simplework()
-//        myWorkManger()
+        myWorkManger()
 
     }
 
@@ -100,14 +100,14 @@ class MainActivity : AppCompatActivity() {
                     bottomappbar.visibility = View.GONE
                 }
                 R.id.barCodeScannerFragment -> {
-                    bottomNavigationView.visibility = View.VISIBLE
-                    floatingactionbutton.visibility = View.VISIBLE
-                    bottomappbar.visibility = View.VISIBLE
+                    bottomNavigationView.visibility = View.GONE
+                    floatingactionbutton.visibility = View.GONE
+                    bottomappbar.visibility = View.GONE
                 }
                 R.id.listAddSuperFragment -> {
-                    bottomNavigationView.visibility = View.VISIBLE
-                    floatingactionbutton.visibility = View.VISIBLE
-                    bottomappbar.visibility = View.VISIBLE
+                    bottomNavigationView.visibility = View.GONE
+                    floatingactionbutton.visibility = View.GONE
+                    bottomappbar.visibility = View.GONE
                 }
                 R.id.mapSMFragment -> {
                     bottomNavigationView.visibility = View.VISIBLE
@@ -149,9 +149,26 @@ class MainActivity : AppCompatActivity() {
 //        WorkManager.getInstance(this)
 //            .enqueue(mRequest)
 //    }
-//    private fun myWorkManger(){
-//
-//    }
+    private fun myWorkManger(){
+        val constraints=Constraints.Builder()
+            .setRequiresCharging(false)
+            .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
+            .setRequiresCharging(false)
+            .setRequiresBatteryNotLow(true)
+            .build()
+
+    val myRequest= PeriodicWorkRequest .Builder(
+        MyWorker::class.java,15,TimeUnit.MINUTES
+    ).setConstraints(constraints)
+        .build()
+    WorkManager.getInstance(this)
+        .enqueueUniquePeriodicWork(
+            "my_id",
+            ExistingPeriodicWorkPolicy.KEEP,
+            myRequest
+
+        )
+    }
 
 }
 
