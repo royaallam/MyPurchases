@@ -9,12 +9,13 @@
         android:id="@+id/decrpation_item"
         android:layout_width="150sp"
         android:layout_height="50sp"
-        android:layout_marginTop="36sp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="68sp"
         android:fontFamily="sans-serif-black"
         android:text="@string/decripa_pro"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/pro_item_iamg"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,12 +33,12 @@
         android:id="@+id/sh_btm"
         android:layout_width="150sp"
         android:layout_height="50sp"
-        android:layout_marginTop="84sp"
-        android:layout_marginEnd="76sp"
-        android:text="@string/show"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="36dp"
         android:background="@drawable/cutom_btm"
+        android:text="@string/show"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/pro_item_iamg"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/decrpation_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

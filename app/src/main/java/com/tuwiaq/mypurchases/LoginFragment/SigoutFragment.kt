@@ -36,13 +36,8 @@ class SigoutFragment : Fragment() {
         super.onCreate(savedInstanceState)
          auth = FirebaseAuth.getInstance()
         user= User()
-//        loadLocate()
-
-
+        loadLocate()
     }
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -68,7 +63,8 @@ class SigoutFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        loadLocate()
+
+  //      loadLocate()
         return view
     }
     fun Init(view: View){
@@ -80,18 +76,12 @@ class SigoutFragment : Fragment() {
 
     }
 
-
-
-
     override fun onStart() {
         super.onStart()
-
-
         choseLang.setOnClickListener {
             showChangerLang()
-            startActivity(Intent(requireContext(),MainActivity::class.java))
-            activity?.finish()
         }
+
 
     }
     private  fun showChangerLang(){
@@ -101,12 +91,18 @@ class SigoutFragment : Fragment() {
             if (which == 0) {
                 setLocate("en")
                 resources
+                startActivity(Intent(requireContext(),MainActivity::class.java))
+           activity?.finish()
             } else if (which == 1) {
                 setLocate("ar")
                 resources
+                startActivity(Intent(requireContext(),MainActivity::class.java))
+            activity?.finish()
             } else if (which == 2) {
                 setLocate("fr")
                 resources
+                startActivity(Intent(requireContext(),MainActivity::class.java))
+            activity?.finish()
             }
             dialog.dismiss()
         }
@@ -126,9 +122,11 @@ class SigoutFragment : Fragment() {
         getDefaultSharedPreferences(context).edit()
         .putString("PREF_CHANGE_LANG_KEY",Lang)
         .apply()
+
      }
     private fun loadLocate(){
         val shar=getDefaultSharedPreferences(context)
+
         val language=shar.getString("PREF_CHANGE_LANG_KEY","")!!
         setLocate(language)
     }
