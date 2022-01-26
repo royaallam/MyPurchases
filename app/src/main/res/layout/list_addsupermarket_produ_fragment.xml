@@ -73,26 +73,31 @@
         android:id="@+id/priceRY"
         android:layout_width="219sp"
         android:layout_height="67sp"
-        android:layout_marginTop="36sp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:fontFamily="sans-serif-black"
         android:hint="@string/enter_you_priec"
         android:inputType="textPersonName"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="14sp" />
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/add_btn"
         android:layout_width="300sp"
         android:layout_height="50sp"
-        android:layout_marginStart="80sp"
         android:layout_marginTop="52sp"
         android:background="@drawable/cutom_btm"
         android:text="@string/add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priceRY" />
+        app:layout_constraintTop_toBottomOf="@+id/priceRY"
+        app:layout_constraintVertical_bias="0.056" />
 
     <ImageView
         android:id="@+id/iamge_pro"

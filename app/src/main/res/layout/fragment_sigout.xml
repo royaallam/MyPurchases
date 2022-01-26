@@ -45,12 +45,12 @@
 
     <Button
         android:id="@+id/logout_btm"
-        android:layout_width="150sp"
-        android:layout_height="50sp"
+        android:layout_width="271dp"
+        android:layout_height="54dp"
         android:layout_marginTop="40sp"
+        android:background="@drawable/cutom_btm"
         android:text="@string/log_out"
         android:textColor="@color/white"
-        android:background="@drawable/cutom_btm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"

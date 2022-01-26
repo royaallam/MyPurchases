@@ -66,8 +66,8 @@
 
     <Button
         android:id="@+id/resister_btn"
-        android:layout_width="350sp"
-        android:layout_height="90sp"
+        android:layout_width="250sp"
+        android:layout_height="50sp"
         android:text="@string/registration"
         android:background="@drawable/cutom_btm"
         app:layout_constraintBottom_toBottomOf="parent"
